@@ -40,17 +40,17 @@
 - divider: true
 
 # Add a header and sample content section
-- header: Test textbook
+- header: JWST Pipeline 7.3
 
-# A chapter w/ a collection of sections beneath it
-#- title: Features and customization
-#  url: /features/features
-#  not_numbered: true
-#  expand_sections: true
-#  sections:
-#  - title: Markdown files
-#    url: /features/markdown
-#    not_numbered: true
+# RTS
+- title: Ramps-to-slopes (CALDETECTOR1)
+  url: /Level1_Detector1Pipeline
+  not_numbered: true
+  expand_sections: true
+  sections:
+  - title: DQ_INIT
+    url: /dq_init
+    not_numbered: true
 #  - title: Jupyter notebooks
 #    url: /features/notebooks
 #    not_numbered: true
