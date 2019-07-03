@@ -48,9 +48,13 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: DQ_INIT
+  - title: dq_init
     url: /dq_init
+    not_numbered: true
+  - title: saturation
+    url: /saturation
     not_numbered: true
 #  - title: Jupyter notebooks
 #    url: /features/notebooks
 #    not_numbered: true
+
