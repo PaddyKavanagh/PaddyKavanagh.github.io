@@ -15,7 +15,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 ---
 
 
-### dq_init step
+## dq_init step
 
 The Data Quality (DQ) initialization step populates the DQ mask for the input dataset. Flags are obtained from the mask reference files in CRDS are copied into the PIXELDQ array of the input dataset. The PIXELDQ array flags issues with pixels such as bad pixels, hot pixels, etc.
 
@@ -186,7 +186,6 @@ To achieve the same result from the command line there are a couple of options.
 Run the `DQInitStep` class using the `strun` command:
 
 ```bash
-
 strun jwst.dq_init.DQInitStep det_image_seq1_MIRIMAGE_F1130Wexp1.fits
 ```
 
@@ -194,7 +193,6 @@ strun jwst.dq_init.DQInitStep det_image_seq1_MIRIMAGE_F1130Wexp1.fits
 If they don't already exist, collect the pipeline configuration files in your working directory using `collect_pipeline_configs` and then run the `DQInitStep` using the `strun` command with the associated `dq_init.cfg` file. 
 
 ```bash
-
 collect_pipeline_cfgs cfgs/
 
 strun cfgs/dq_init.cfg det_image_seq1_MIRIMAGE_F1130Wexp1.fits
@@ -209,14 +207,12 @@ A full list of the command line options are given by running the following:
 
 
 ```bash
-
 strun jwst.dq_init.DQInitStep -h
 ```
 
 or 
 
 ```bash
-
 strun cfgs/dq_init.cfg -h
 ```
 
@@ -230,81 +226,13 @@ To override the reference file for this step in Python:
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
 ```python
 # set the override reference file name
 my_ref = 'my_mask.fits'
 
 dm = dq_init_step.DQInitStep.call(my_input_file, output_use_model=True, save_results=True,
                                  override_mask=my_ref)
-
-
 ```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_traceback_line}
-```
-
-    ---------------------------------------------------------------------------
-
-    FileNotFoundError                         Traceback (most recent call last)
-
-    <ipython-input-5-40b4ec6a22cf> in <module>()
-          3 
-          4 dm = dq_init_step.DQInitStep.call(my_input_file, output_use_model=True, save_results=True,
-    ----> 5                                  override_mask=my_ref)
-    
-
-    /anaconda3/envs/jwst7.3/lib/python3.6/site-packages/jwst-0.13.7-py3.6.egg/jwst/stpipe/step.py in call(cls, *args, **kwargs)
-        533         else:
-        534             instance = cls(**kwargs)
-    --> 535         return instance.run(*args)
-        536 
-        537     @property
-
-
-    /anaconda3/envs/jwst7.3/lib/python3.6/site-packages/jwst-0.13.7-py3.6.egg/jwst/stpipe/step.py in run(self, *args)
-        392                     self.prefetch(*args)
-        393                 try:
-    --> 394                     step_result = self.process(*args)
-        395                 except TypeError as e:
-        396                     if "process() takes exactly" in str(e):
-
-
-    /anaconda3/envs/jwst7.3/lib/python3.6/site-packages/jwst-0.13.7-py3.6.egg/jwst/dq_init/dq_init_step.py in process(self, input)
-         60 
-         61         # Retreive the mask reference file name
-    ---> 62         self.mask_filename = self.get_reference_file(input_model, 'mask')
-         63         self.log.info('Using MASK reference file %s', self.mask_filename)
-         64 
-
-
-    /anaconda3/envs/jwst7.3/lib/python3.6/site-packages/jwst-0.13.7-py3.6.egg/jwst/stpipe/step.py in get_reference_file(self, input_file, reference_file_type)
-        667             self._reference_files_used.append(
-        668                 (reference_file_type, hdr_name))
-    --> 669         return crds_client.check_reference_open(reference_name)
-        670 
-        671     @classmethod
-
-
-    /anaconda3/envs/jwst7.3/lib/python3.6/site-packages/jwst-0.13.7-py3.6.egg/jwst/stpipe/crds_client.py in check_reference_open(refpath)
-        116     """
-        117     if refpath != "N/A" and refpath.strip() != "":
-    --> 118         opened = open(refpath, "rb")
-        119         opened.close()
-        120     return refpath
-
-
-    FileNotFoundError: [Errno 2] No such file or directory: '/Users/patrickkavanagh/github/PaddyKavanagh.github.io/content/my_mask.fits'
-
-
-```
-</div>
-</div>
-</div>
 
 
 
