@@ -9,8 +9,8 @@ prev_page:
   url: 
   title: ''
 next_page:
-  url: 
-  title: ''
+  url: /Level1_Detector1Pipeline
+  title: 'Ramps-to-slopes (CALDETECTOR1)'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -21,11 +21,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 This Jupyter book provides instructions on running the JWST Calibration Pipeline and individual pipeline steps. Information in this book is collated from the official JWST Calibration Pipeline documentation (see link below), MIRI CDP documentation, MIRI Team Wiki, etc. The goal is to provide information, user instructions, examples and issues for each pipeline and steps (except coronography). More detailed information on the pipeline can be found here:
 
-https://jwst-pipeline.readthedocs.io/en/latest/
+<https://jwst-pipeline.readthedocs.io/en/latest/>
 
 If you have or find any other issues installing and running the pipeline you can report them on the MIRICLE Bugzilla page (you need to have/set up a Bugzilla account) here:
 
-http://www.miricle.org/bugzilla/
+<http://www.miricle.org/bugzilla/>
 
 Select the 'Pipeline support' option in the component menu when filing the new report 
 
@@ -51,7 +51,7 @@ This book is split into chapters according to these stages and application to re
 
 This book is specifically for Build 7.3 of the JWST Calibration Pipeline. To install this version you must have an Anaconda installation:
 
-https://www.anaconda.com/
+<https://www.anaconda.com/>
 
 To install, open a terminal:
 
@@ -62,9 +62,9 @@ conda activate jwst_env
 
 where `<URL>` is dependent on the operating system:
     
-Linux: http://ssb.stsci.edu/releases/jwstdp/0.13.7/latest-linux
+Linux: <http://ssb.stsci.edu/releases/jwstdp/0.13.7/latest-linux>
 
-OS X: http://ssb.stsci.edu/releases/jwstdp/0.13.7/latest-osx
+OS X: <http://ssb.stsci.edu/releases/jwstdp/0.13.7/latest-osx>
 
 
 
@@ -90,4 +90,40 @@ export CRDS_CONTEXT='jwst_0535.pmap'
 ```
 
 Note that the calibration files can be large (~GB) and may take some time to download. However, the `crds` task will only fetch calibration files from the server if they are not on your system so they will only be downloaded once. Using the CRDS server will require the least amount of CRDS file storage on your system. 
+
+
+
+## Pipeline output
+
+Unless the user specifies an output filename, the various pipeline modules will use the input root along with a set of predetermined suffixes to set the outputs. The output suffix will always replace the input suffix. The list of default suffixes is:
+
+|Product|Suffix| 
+|:---|:---|
+|uncalibrated level 1B|uncal|
+|level 2A ramp|ramp|
+|level 2A count rate image|rate|
+|level 2A count rate per integration|rateints|
+|optional fitting results from ramp_fit step|fitopt|
+|level 2B background-subtracted image|bsub|
+|level 2B background-subtracted image per integration|bsubints|
+|fully calibrated level 2B image|cal|
+|fully calibrated level 2B images per integration|calints|
+|1D extracted spectrum|x1d|
+|1D extracted spectra per integration|x1dints|
+|Resampled image|i2d|
+|Resampled spectrum|s2d|
+|Resampled 3D IFU cube|s3d|
+
+
+
+
+
+## Running the JWST pipeline
+
+The JWST pipeline can be run either from the command line or from within python. The examples in this book will demonstrate both options.
+
+The instructions and tutorials for the pipelines and the steps can be found under the following chapters:
+
+* Ramps-to-slopes
+
 
