@@ -4,18 +4,18 @@ redirect_from:
 interact_link: content/dq_init.ipynb
 kernel_name: python3
 has_widgets: false
-title: 'DQ_INIT'
+title: 'dq_init'
 prev_page:
   url: /Level1_Detector1Pipeline
   title: 'Ramps-to-slopes (CALDETECTOR1)'
 next_page:
-  url: 
-  title: ''
+  url: /saturation
+  title: 'saturation'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
 
-## dq_init step
+## `dq_init` step
 
 The Data Quality (DQ) initialization step populates the DQ mask for the input dataset. Flags are obtained from the mask reference files in CRDS are copied into the PIXELDQ array of the input dataset. The PIXELDQ array flags issues with pixels such as bad pixels, hot pixels, etc.
 
@@ -110,7 +110,7 @@ Initialize the Data Quality extension from the
 
 
 
-Set the name of the input file, where the output should be saved and run the step. The output file will be saved in `my_output_dir` as `_rate.fits`. 
+Set the name of the input file and run the step. This will produce an output file ending with `_dqinitstep.fits`.
 
 *Parameters used:*
 
@@ -120,7 +120,7 @@ Set the name of the input file, where the output should be saved and run the ste
 `save_results`: boolean, optional, default=False  
 &nbsp;&nbsp;&nbsp;&nbsp; save the results to file
 
-This will produce an output file ending with `_dq_init.fits`  Note that the `dq_init` will return the output datamodel so we set this to the `dm` variable.
+Note that the `dq_init` will return the output datamodel so we set this to the `dm` variable.
 
 
 
@@ -198,7 +198,7 @@ collect_pipeline_cfgs cfgs/
 strun cfgs/dq_init.cfg det_image_seq1_MIRIMAGE_F1130Wexp1.fits
 ```
 
-This will produce the same output file ending with `_dq_init.fits` 
+This will produce the same output file ending with `_dqinitstep.fits` 
 
 
 
@@ -239,14 +239,12 @@ dm = dq_init_step.DQInitStep.call(my_input_file, output_use_model=True, save_res
 and using the command line:
 
 ```bash
-
 strun jwst.dq_init.DQInitStep det_image_seq1_MIRIMAGE_F1130Wexp1.fits  --override_mask my_mask.fits
 ```
 
 or
 
 ```bash
-
 strun cfgs/dq_init.cfg det_image_seq1_MIRIMAGE_F1130Wexp1.fits --override_mask my_mask.fits
 ```
 
