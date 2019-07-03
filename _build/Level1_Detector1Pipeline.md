@@ -50,7 +50,7 @@ An example of running the file through the Detector1Pipeline is now shown using 
 
 ### Python
 
-Start by importing what will be used, disable warnings and set the `CRDS_CONTEXT` to use
+Start by importing what will be used and set the `CRDS_CONTEXT`
 
 
 
@@ -106,7 +106,7 @@ print(Detector1Pipeline.__doc__)
 
 
 
-Set the name of the input fil, where the output should be saved and run the pipeline. The output level 2A files will be saved in my_output_dir as `_rate.fits`. Note that we must explicitly skip the IPC step when running from Python. This is achieved by passing the `skip` parameter to the step in a Python `dict`.
+Set the name of the input file, where the output should be saved and run the pipeline. The output level 2A files will be saved in `my_output_dir` as `_rate.fits`. Note that we must explicitly skip the IPC step when running from Python. This is achieved by passing the `skip` parameter to the step in a Python `dict`.
 
 *Parameters used:*
 
@@ -122,7 +122,7 @@ Set the name of the input fil, where the output should be saved and run the pipe
 `steps` : dict, optional  
 &nbsp;&nbsp;&nbsp;&nbsp; dict of user-defined parameters for individual steps  
 
-Note that the Detector1Pipeline will return the rate datamodel so we set this to the `dm` variable.
+Note that the `Detector1Pipeline` will return the rate datamodel so we set this to the `dm` variable.
 
 
 
@@ -195,8 +195,6 @@ Run the `Detector1Pipeline` class using the `strun` command:
 
 ```bash
 mkdir demo_output
-
-collect_pipeline_cfgs cfgs/
 
 strun jwst.pipeline.Detector1Pipeline det_image_seq1_MIRIMAGE_F1130Wexp1.fits --output_dir demo_output
 ```
