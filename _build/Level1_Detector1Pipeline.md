@@ -23,7 +23,7 @@ Official documentation for `Detector1Pipeline` can be found here:
 
 <https://jwst-pipeline.readthedocs.io/en/latest/jwst/pipeline/calwebb_detector1.html>
 
-The `Detector1Pipelin`e comprises a linear series of steps to first calibrate the pixel ramps, detect cosmic ray jumps, and fit a linear function to the calibrate ramps to produce a slope or DMS Level 2A image. The steps applied to MIRI data in order are:
+The `Detector1Pipeline` comprises a linear series of steps to first calibrate the pixel ramps, detect cosmic ray jumps, and fit a linear function to the calibrate ramps to produce a slope or DMS Level 2A image. The steps applied to MIRI data in order are:
 
 |Step|Description|
 |:---|:---|
@@ -44,7 +44,7 @@ For more information and examples of each of the steps click on the links in the
 
 ### Input data
 
-An example of running the file through the Detector1Pipeline is now shown. The file is a simple simulated observation of a point source with the F1130W filter produced with [MIRISim v2.1](http://miri.ster.kuleuven.be/bin/view/Public/MIRISimPublicRelease2dot1).
+An example of running the file through the Detector1Pipeline is now shown using a simple simulated observation of a galaxy with the MIRI Imager (F1130W filter) produced with [MIRISim v2.1](http://miri.ster.kuleuven.be/bin/view/Public/MIRISimPublicRelease2dot1).
 
 
 
@@ -64,9 +64,6 @@ from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt
 from subprocess import call
 from jwst import datamodels
-
-import warnings
-warnings.filterwarnings('ignore')
 
 # set the CRDS_CONTEXT
 os.environ["CRDS_CONTEXT"] = "jwst_0535.pmap"
@@ -162,13 +159,13 @@ We can plot the before (last frame of first integration) and after images
 # open the input image as a jwst data model
 with datamodels.open(my_input_file) as in_dm:
 
-    fig, axs = plt.subplots(1, 2, figsize=(12, 6))
+    fig, axs = plt.subplots(1, 2, figsize=(14, 7), sharey=True)
 
-    axs[0].imshow(in_dm.data[0,-1,:,:], cmap='jet', interpolation='nearest', origin='lower', norm=LogNorm(vmin=1e4,vmax=2e4))
-    axs[0].annotate('Input ramp image (last frame)', xy=(0.0, 1.02), xycoords='axes fraction', fontsize=12, fontweight='bold', color='k')
+    axs[0].imshow(in_dm.data[0,-1,:,:], cmap='jet', interpolation='nearest', origin='lower', norm=LogNorm(vmin=1.1e4,vmax=6.5e4))
+    axs[0].annotate('DMS Level 1B (ramp)', xy=(0.0, 1.02), xycoords='axes fraction', fontsize=12, fontweight='bold', color='k')
     axs[0].set_facecolor('black')
-    axs[1].imshow(out_dm.data, cmap='jet', interpolation='nearest', origin='lower', norm=LogNorm(vmin=2, vmax=100))
-    axs[1].annotate('Calibrated slope image', xy=(0.0, 1.02), xycoords='axes fraction', fontsize=12, fontweight='bold', color='k')
+    axs[1].imshow(dm.data, cmap='jet', interpolation='nearest', origin='lower', norm=LogNorm(vmin=10, vmax=1000))
+    axs[1].annotate('DMS Level 2A (slope)', xy=(0.0, 1.02), xycoords='axes fraction', fontsize=12, fontweight='bold', color='k')
     axs[1].set_facecolor('black')
     plt.tight_layout()
     plt.show()
@@ -177,13 +174,38 @@ with datamodels.open(my_input_file) as in_dm:
 ```
 </div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+{:.output_png}
+![png](images/Level1_Detector1Pipeline_9_0.png)
+
+</div>
+</div>
 </div>
 
 
 
 ### Command line
 
-To achieve the same result from the command line we must first collect the pipeline configuration files and then run the `Detector1Pipeline` using the `strun` command:
+To achieve the same result from the command line there are a couple of options. 
+
+**Option 1:**
+Run the `Detector1Pipeline` class using the `strun` command:
+
+```bash
+mkdir demo_output
+
+collect_pipeline_cfgs cfgs/
+
+strun jwst.pipeline.Detector1Pipeline det_image_seq1_MIRIMAGE_F1130Wexp1.fits --output_dir demo_output
+```
+
+This will produce the same output file in the user-defined `--output_dir`
+
+
+**Option 2:**
+Collect the pipeline configuration files in your working directory using `collect_pipeline_configs` and then run the `Detector1Pipeline` using the `strun` command with the associated `calwebb_detector1.cfg` file. This option is a little more flexible as one can create edit the cfg files, use them again, etc.
 
 ```bash
 mkdir demo_output
@@ -202,5 +224,5 @@ This will produce the same output file in the user-defined `--output_dir`
 
 Other notebooks with more complex examples can be found here:
 
-
+*To be added*
 
