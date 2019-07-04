@@ -19,7 +19,7 @@ This step flags saturated pixel values. It loops over all integrations, comparin
 
 Official documentation for `saturation` can be found here:
 
-https://jwst-pipeline.readthedocs.io/en/latest/jwst/saturation/index.html
+<https://jwst-pipeline.readthedocs.io/en/latest/jwst/saturation/index.html>
 
 
 

@@ -7,8 +7,8 @@ prev_page:
   url: /lastframe
   title: 'lastframe'
 next_page:
-  url: 
-  title: ''
+  url: /RSCD
+  title: 'RSCD'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -19,7 +19,7 @@ This step corrects science data values for detector non-linearity. The correctio
 
 Official documentation for `linearity` can be found here:
 
-https://jwst-pipeline.readthedocs.io/en/latest/jwst/linearity/index.html
+<https://jwst-pipeline.readthedocs.io/en/latest/jwst/linearity/index.html>
 
 
 

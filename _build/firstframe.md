@@ -19,7 +19,7 @@ This MIRI only step flags the first group in every integration as bad if the num
 
 Official documentation for `firstframe` can be found here:
 
-https://jwst-pipeline.readthedocs.io/en/latest/jwst/firstframe/index.html
+<https://jwst-pipeline.readthedocs.io/en/latest/jwst/firstframe/index.html>
 
 
 

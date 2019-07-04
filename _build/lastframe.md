@@ -7,8 +7,8 @@ prev_page:
   url: /firstframe
   title: 'firstframe'
 next_page:
-  url: 
-  title: ''
+  url: /linearity
+  title: 'linearity'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -19,7 +19,7 @@ This step flags the final group as bad if the number of groups is greater than 3
 
 Official documentation for `lastframe` can be found here:
 
-https://jwst-pipeline.readthedocs.io/en/latest/jwst/lastframe/index.html
+<https://jwst-pipeline.readthedocs.io/en/latest/jwst/lastframe/index.html>
 
 
 

@@ -21,7 +21,7 @@ The Data Quality (DQ) initialization step populates the DQ mask for the input da
 
 Official documentation for `dq_init` can be found here:
 
-https://jwst-pipeline.readthedocs.io/en/latest/jwst/dq_init/index.html
+<https://jwst-pipeline.readthedocs.io/en/latest/jwst/dq_init/index.html>
 
 
 
