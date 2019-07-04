@@ -60,6 +60,9 @@
   - title: lastframe
     url: /lastframe
     not_numbered: true
+  - title: linearity
+    url: /linearity
+    not_numbered: true
     #  - title: Jupyter notebooks
 #    url: /features/notebooks
 #    not_numbered: true
