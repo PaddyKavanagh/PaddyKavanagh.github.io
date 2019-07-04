@@ -7,8 +7,8 @@ prev_page:
   url: /dq_init
   title: 'dq_init'
 next_page:
-  url: 
-  title: ''
+  url: /firstframe
+  title: 'firstframe'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -102,7 +102,7 @@ print(saturation_step.SaturationStep.spec)
 
 
 
-Set the name of the input file and run the step. This will produce an output file ending with `_saturation.fits`
+Set the name of the input file and run the step. This will produce an output file ending with `_saturationstep.fits`
 
 *Parameters used:*
 
@@ -257,7 +257,7 @@ If they don't already exist, collect the pipeline configuration files in your wo
 ```bash
 collect_pipeline_cfgs cfgs/
 
-strun cfgs/saturation.cfg det_image_seq1_MIRIMAGE_F1130Wexp1_saturationstep.fits
+strun cfgs/saturation.cfg det_image_seq1_MIRIMAGE_F1130Wexp1_dqinitstep.fits
 ```
 
 This will produce the same output file ending with `_saturationstep.fits` 
