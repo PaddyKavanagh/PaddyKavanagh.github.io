@@ -54,7 +54,13 @@
   - title: saturation
     url: /saturation
     not_numbered: true
-#  - title: Jupyter notebooks
+  - title: firstframe
+    url: /firstframe
+    not_numbered: true
+  - title: lastframe
+    url: /lastframe
+    not_numbered: true
+    #  - title: Jupyter notebooks
 #    url: /features/notebooks
 #    not_numbered: true
 
