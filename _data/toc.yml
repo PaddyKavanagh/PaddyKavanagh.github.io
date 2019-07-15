@@ -25,6 +25,7 @@
 - title: Home
   url: /Introduction
   not_numbered: true
+  expand_sections: false
 
 # External link
 #- title: GitHub repository
@@ -66,7 +67,6 @@
   - title: RSCD
     url: /RSCD
     not_numbered: true
-    #  - title: Jupyter notebooks
-#    url: /features/notebooks
-#    not_numbered: true
-
+  - title: dark_current
+    url: /dark_current
+    not_numbered: true
