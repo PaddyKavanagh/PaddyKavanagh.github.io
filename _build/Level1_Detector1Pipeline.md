@@ -10,7 +10,7 @@ prev_page:
   title: 'Home'
 next_page:
   url: /dq_init
-  title: 'DQ_INIT'
+  title: 'dq_init'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

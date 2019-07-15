@@ -236,10 +236,6 @@ plt.show()
 
 
 
-The ramp plot paints a slightly different picture for the centre pixel (and presumably many pixels at the centre of the galaxy). It is apparent that MIRISim is imposing a saturation limit that is acutally less than the corresponding limit in the pipeline reference file. Therefore, even though the ramp is clearly saturating - it levels off at about group 20, it is not actually breaching the saturation limit defined in the reference file for this pixel. *One must be careful interpreting fits to this ramp!*
-
-
-
 ### Command line
 
 To achieve the same result from the command line there are a couple of options. 

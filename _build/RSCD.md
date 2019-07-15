@@ -189,10 +189,10 @@ else:
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-RSCD step only operates on exposures with more than one integration.
-```
+
+{:.output_png}
+![png](images/RSCD_9_0.png)
+
 </div>
 </div>
 </div>
