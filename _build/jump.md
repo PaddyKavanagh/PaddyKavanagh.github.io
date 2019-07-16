@@ -7,8 +7,8 @@ prev_page:
   url: /refpix
   title: 'refpix'
 next_page:
-  url: 
-  title: ''
+  url: /ramp_fitting
+  title: 'ramp_fitting'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -136,7 +136,7 @@ We can plot the location of detected jumps
 pixel = [821, 385]
 
 # define group numbers for integration ramps
-group = range(1,dm.data[0,:,pixel[0],pixel[1]].shape[0]+1,1)
+group = range(1,dm.data[0,:,pixel[1],pixel[0]].shape[0]+1,1)
 
 # plot--------------------------------------
 fig, axs = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
