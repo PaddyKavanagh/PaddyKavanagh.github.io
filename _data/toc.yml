@@ -79,3 +79,11 @@
   - title: ramp_fitting
     url: /ramp_fitting
     not_numbered: true
+    
+# IMAGE2
+- title: Level 2 Imager (CALIMAGE2)
+  url: /Level2_Image2Pipeline
+  
+# IMAGE3
+- title: Level 3 Imager (CALIMAGE3)
+  url: /Level3_Image3Pipeline
