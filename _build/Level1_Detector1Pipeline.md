@@ -44,7 +44,7 @@ For more information and examples of each of the steps click on the links in the
 
 ### Input data
 
-An example of running the file through the Detector1Pipeline is now shown using a simple simulated observation of a galaxy with the MIRI Imager (F1130W filter) produced with [MIRISim v2.1](http://miri.ster.kuleuven.be/bin/view/Public/MIRISimPublicRelease2dot1).
+An example of running the file through the Detector1Pipeline is now shown using a simple simulated observation of a galaxy and some point sources with the MIRI Imager (F1130W filter) produced with [MIRISim v2.1](http://miri.ster.kuleuven.be/bin/view/Public/MIRISimPublicRelease2dot1).
 
 
 
@@ -142,6 +142,7 @@ if not os.path.exists(my_output_dir):
 dm = Detector1Pipeline.call(my_input_file, output_use_model=True, save_results=True, 
                             output_dir=my_output_dir, steps={'ipc': {'skip': True}})
 
+
 ```
 </div>
 
@@ -161,10 +162,10 @@ with datamodels.open(my_input_file) as in_dm:
 
     fig, axs = plt.subplots(1, 2, figsize=(14, 7), sharey=True)
 
-    axs[0].imshow(in_dm.data[0,-1,:,:], cmap='jet', interpolation='nearest', origin='lower', norm=LogNorm(vmin=1.1e4,vmax=6.5e4))
+    axs[0].imshow(in_dm.data[0,-1,:,:], cmap='jet', interpolation='nearest', origin='lower', norm=LogNorm(vmin=1e4,vmax=2e4))
     axs[0].annotate('DMS Level 1B (ramp)', xy=(0.0, 1.02), xycoords='axes fraction', fontsize=12, fontweight='bold', color='k')
     axs[0].set_facecolor('black')
-    axs[1].imshow(dm.data, cmap='jet', interpolation='nearest', origin='lower', norm=LogNorm(vmin=10, vmax=1000))
+    axs[1].imshow(dm.data, cmap='jet', interpolation='nearest', origin='lower', norm=LogNorm(vmin=5, vmax=400))
     axs[1].annotate('DMS Level 2A (slope)', xy=(0.0, 1.02), xycoords='axes fraction', fontsize=12, fontweight='bold', color='k')
     axs[1].set_facecolor('black')
     plt.tight_layout()
