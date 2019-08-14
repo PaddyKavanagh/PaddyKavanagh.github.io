@@ -83,7 +83,11 @@
 # IMAGE2
 - title: Level 2 Imager (CALIMAGE2)
   url: /Level2_Image2Pipeline
+  not_numbered: true
+  expand_sections: true
   
 # IMAGE3
 - title: Level 3 Imager (CALIMAGE3)
   url: /Level3_Image3Pipeline
+  not_numbered: true
+  expand_sections: true
