@@ -91,3 +91,9 @@
   url: /Level3_Image3Pipeline
   not_numbered: true
   expand_sections: true
+  
+# SPEC2 MRS
+- title: Level 2 MRS (CALSPEC2)
+  url: /Level2_Spec2Pipeline_MRS
+  not_numbered: true
+  expand_sections: true
