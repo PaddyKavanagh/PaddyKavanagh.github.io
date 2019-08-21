@@ -9,8 +9,8 @@ prev_page:
   url: /Level2_Image2Pipeline
   title: 'Level 2 Imager (CALIMAGE2)'
 next_page:
-  url: 
-  title: ''
+  url: /Level2_Spec2Pipeline_MRS
+  title: 'Level 2 MRS (CALSPEC2)'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -75,7 +75,7 @@ os.environ["CRDS_CONTEXT"] = "jwst_0535.pmap"
 
 
 
-`Image2Pipeline` can be run by passing indivual exposures or datamodels but in this sample case we produce an association file that links the background exposures to the science exposures so it can be subtracted. It is assumed that the science files are in 'IMA_science' and the background file is in 'IMA_background'. The content of the association file is printed for inspection.
+`Image3Pipeline` requires an association file as input that lists the exposures to be combined. The content of the association file is printed for inspection. It is assumed the files are in 'IMA_science'
 
 
 
