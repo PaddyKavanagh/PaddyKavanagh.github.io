@@ -1,0 +1,69 @@
+Traceback (most recent call last):
+  File "/Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/nbclient/client.py", line 1082, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/nbclient/client.py", line 535, in async_execute
+    await self.async_execute_cell(
+  File "/Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/nbclient/client.py", line 827, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/nbclient/client.py", line 735, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# load the science and background files to lists
+my_science_files = glob.glob('IMA_science/*cal.fits')
+my_science_files = sorted(my_science_files)
+
+# set the association name
+asn_name = 'my_galaxy'
+
+# create an association
+asn = asn_from_list(my_science_files, product_name=asn_name)
+
+# set some metadata
+asn['asn_pool'] = asn_name + '_pool'
+asn['asn_type'] = 'image3'
+        
+# print the association and save to file
+name, ser = asn.dump()
+print(ser)
+
+asn_file = asn_name + '_lvl3_asn.json'
+with open(asn_file, 'w') as f:
+    f.write(ser)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAssociationNotValidError[0m                  Traceback (most recent call last)
+[0;32m<ipython-input-2-6bbc6a3f741b>[0m in [0;36m<module>[0;34m[0m
+[1;32m     14[0m [0;34m[0m[0m
+[1;32m     15[0m [0;31m# print the association and save to file[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 16[0;31m [0mname[0m[0;34m,[0m [0mser[0m [0;34m=[0m [0masn[0m[0;34m.[0m[0mdump[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     17[0m [0mprint[0m[0;34m([0m[0mser[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     18[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/jwst/associations/association.py[0m in [0;36mdump[0;34m(self, format, **kwargs)[0m
+[1;32m    232[0m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mioregistry[0m[0;34m[[0m[0mformat[0m[0;34m][0m[0;34m.[0m[0mdump[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    233[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 234[0;31m             raise AssociationNotValidError(
+[0m[1;32m    235[0m                 [0;34m'Association {} is not valid'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    236[0m             )
+
+[0;31mAssociationNotValidError[0m: Association jwnoprogram-a3001_image3_002_asn with 1 products
+Rule=DMS_Level3_Base
+No constraints
+Products:
+	my_galaxy with 0 members is not valid
+AssociationNotValidError: Association jwnoprogram-a3001_image3_002_asn with 1 products
+Rule=DMS_Level3_Base
+No constraints
+Products:
+	my_galaxy with 0 members is not valid
+
