@@ -1,30 +1,21 @@
-file: README
-
-- part: content/Introduction
-
-- part: content/Level1_Detector1Pipeline
-  chapters:
-  - file: content/dq_init
-  - file: content/saturation
-  - file: content/firstframe
-  - file: content/lastframe
-  - file: content/linearity
-  - file: content/RSCD
-  - file: content/dark_current
-  - file: content/refpix
-  - file: content/jump
-  - file: content/ramp_fitting
-    
-#  - file: content/features/markdown
-#    sections:
-#    - file: content/features/notebooks
-#    - file: content/features/features
-
-- part: content/Level2_Image2Pipeline    
-- part: content/Level3_Image3Pipeline
-- part: content/Level2_Spec2Pipeline_MRS
-- part: content/Level3_Spec3Pipeline_MRS
-- part: content/Level2_Spec2Pipeline_LRS-SLIT_point_source
+#- file: README
+- file: content/Introduction
+- file: content/Level1_Detector1Pipeline
+- file: content/dq_init
+- file: content/saturation
+- file: content/firstframe
+- file: content/lastframe
+- file: content/linearity
+- file: content/RSCD
+- file: content/dark_current
+- file: content/refpix
+- file: content/jump
+- file: content/ramp_fitting
+- file: content/Level2_Image2Pipeline    
+- file: content/Level3_Image3Pipeline
+- file: content/Level2_Spec2Pipeline_MRS
+- file: content/Level3_Spec3Pipeline_MRS
+- file: content/Level2_Spec2Pipeline_LRS-SLIT_point_source
 
 - file: _build/firstframe
   sections:
