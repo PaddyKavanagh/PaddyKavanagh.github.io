@@ -333,6 +333,13 @@
   <a class="reference internal nav-link" href="#installation">
    Installation
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#additional-packages">
+     Additional packages
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#calibration-reference-data-system-crds">
@@ -396,15 +403,22 @@ conda activate jwst_env
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">&lt;URL&gt;</span></code> is dependent on the operating system:</p>
-<p>Linux: <a class="reference external" href="https://ssb.stsci.edu/releases/jwstdp/0.16.1/conda_python_stable-deps.txt">https://ssb.stsci.edu/releases/jwstdp/0.16.1/conda_python_stable-deps.txt</a></p>
-<p>OS X: <a class="reference external" href="https://ssb.stsci.edu/releases/jwstdp/0.16.1/conda_python_macos-stable-deps.txt">https://ssb.stsci.edu/releases/jwstdp/0.16.1/conda_python_macos-stable-deps.txt</a></p>
+<p>Linux: <a class="reference external" href="https://ssb.stsci.edu/releases/jwstdp/0.17.1/conda_python_stable-deps.txt">https://ssb.stsci.edu/releases/jwstdp/0.17.1/conda_python_stable-deps.txt</a></p>
+<p>OS X: <a class="reference external" href="https://ssb.stsci.edu/releases/jwstdp/0.17.1/conda_python_macos-stable-deps.txt">https://ssb.stsci.edu/releases/jwstdp/0.17.1/conda_python_macos-stable-deps.txt</a></p>
 <p>Then install the dependencies:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -r &lt;URL&gt;
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">&lt;URL&gt;</span></code> is again dependent on the operating system:</p>
-<p>Linux: <a class="reference external" href="https://ssb.stsci.edu/releases/jwstdp/0.16.1/reqs_stable-deps.txt">https://ssb.stsci.edu/releases/jwstdp/0.16.1/reqs_stable-deps.txt</a></p>
-<p>OS X: <a class="reference external" href="https://ssb.stsci.edu/releases/jwstdp/0.16.1/reqs_macos-stable-deps.txt">https://ssb.stsci.edu/releases/jwstdp/0.16.1/reqs_macos-stable-deps.txt</a></p>
+<p>Linux: <a class="reference external" href="https://ssb.stsci.edu/releases/jwstdp/0.17.1/reqs_stable-deps.txt">https://ssb.stsci.edu/releases/jwstdp/0.17.1/reqs_stable-deps.txt</a></p>
+<p>OS X: <a class="reference external" href="https://ssb.stsci.edu/releases/jwstdp/0.17.1/reqs_macos-stable-deps.txt">https://ssb.stsci.edu/releases/jwstdp/0.17.1/reqs_macos-stable-deps.txt</a></p>
+<div class="section" id="additional-packages">
+<h3>Additional packages<a class="headerlink" href="#additional-packages" title="Permalink to this headline">¶</a></h3>
+<p>The resulting pipeline envirnoment will not contain packages often used for testing and development. Two of the most commonly used are <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> and <code class="docutils literal notranslate"><span class="pre">ipython</span></code>. To install these:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install jupyter ipython -y
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="calibration-reference-data-system-crds">
 <h2>Calibration Reference Data System (CRDS)<a class="headerlink" href="#calibration-reference-data-system-crds" title="Permalink to this headline">¶</a></h2>
