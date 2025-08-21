@@ -1,5 +1,4 @@
-#- file: README
-- file: content/JWST MIRI Pipeline/index
+- file: index
   sections:
     - file: content/JWST MIRI Pipeline/JWST MIRI Pipeline/
     - file: content/JWST MIRI Pipeline/Introduction
