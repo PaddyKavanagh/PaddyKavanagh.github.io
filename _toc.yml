@@ -1,18 +1,21 @@
 #- file: README
-- file: content/Introduction
-- file: content/Level1_Detector1Pipeline
-- file: content/dq_init
-- file: content/saturation
-- file: content/firstframe
-- file: content/lastframe
-- file: content/linearity
-- file: content/RSCD
-- file: content/dark_current
-- file: content/refpix
-- file: content/jump
-- file: content/ramp_fitting
-- file: content/Level2_Image2Pipeline    
-- file: content/Level3_Image3Pipeline
-- file: content/Level2_Spec2Pipeline_MRS
-- file: content/Level3_Spec3Pipeline_MRS
-- file: content/Level2_Spec2Pipeline_LRS-SLIT_point_source
+- file: content/JWST MIRI Pipeline/index
+  sections:
+    - file: content/JWST MIRI Pipeline/JWST MIRI Pipeline/
+    - file: content/JWST MIRI Pipeline/Introduction
+    - file: content/JWST MIRI Pipeline/Level1_Detector1Pipelin
+    - file: content/JWST MIRI Pipeline/dq_init
+    - file: content/JWST MIRI Pipeline/saturation
+    - file: content/JWST MIRI Pipeline/firstframe
+    - file: content/JWST MIRI Pipeline/lastframe
+    - file: content/JWST MIRI Pipeline/linearity
+    - file: content/JWST MIRI Pipeline/RSCD
+    - file: content/JWST MIRI Pipeline/dark_current
+    - file: content/JWST MIRI Pipeline/refpix
+    - file: content/JWST MIRI Pipeline/jump
+    - file: content/JWST MIRI Pipeline/ramp_fitting
+    - file: content/JWST MIRI Pipeline/Level2_Image2Pipeline    
+    - file: content/JWST MIRI Pipeline/Level3_Image3Pipeline
+    - file: content/JWST MIRI Pipeline/Level2_Spec2Pipeline_MRS
+    - file: content/JWST MIRI Pipeline/Level3_Spec3Pipeline_MRS
+    - file: content/JWST MIRI Pipeline/Level2_Spec2Pipeline_LRS-SLIT_point_source
