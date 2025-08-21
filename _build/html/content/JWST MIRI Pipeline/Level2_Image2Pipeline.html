@@ -1,0 +1,990 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Image2Pipeline (MIRI CALIMAGE2) &#8212; Patrick Kavanagh&#39;s Homepage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/JWST MIRI Pipeline/Level2_Image2Pipeline';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/MIRI_logo.png" class="logo__image only-light" alt="Patrick Kavanagh's Homepage - Home"/>
+    <script>document.write(`<img src="../../_static/MIRI_logo.png" class="logo__image only-dark" alt="Patrick Kavanagh's Homepage - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Patrick Kavanagh
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/JWST MIRI Pipeline/Level2_Image2Pipeline.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Image2Pipeline   (MIRI CALIMAGE2)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-data">Input data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line">Command line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-examples">Further examples</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="image2pipeline-miri-calimage2">
+<h1>Image2Pipeline   (MIRI CALIMAGE2)<a class="headerlink" href="#image2pipeline-miri-calimage2" title="Link to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">Image2Pipeline</span></code> applies instrumental corrections and calibrations, in addition to the subtraction of dedicated background exposures, that result in a fully calibrated, background subtracted individual exposures.</p>
+<p>Official documentation for <code class="docutils literal notranslate"><span class="pre">Image2Pipeline</span></code> can be found here:</p>
+<p><a class="reference external" href="https://jwst-pipeline.readthedocs.io/en/latest/jwst/pipeline/calwebb_image2.html">https://jwst-pipeline.readthedocs.io/en/latest/jwst/pipeline/calwebb_image2.html</a></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Image2Pipeline</span></code> comprises a linear series of steps. The steps applied to MIRI data in order are:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Step</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">background</span></code></p></td>
+<td class="text-left"><p>subtract dedicated background exposures</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">assign_wcs</span></code></p></td>
+<td class="text-left"><p>attach WCS object to each science exposure</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">flat_field</span></code></p></td>
+<td class="text-left"><p>correct the exposure using the flat-field reference file</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">photom</span></code></p></td>
+<td class="text-left"><p>apply flux (photometric) calibration</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">resample</span></code></p></td>
+<td class="text-left"><p>resample using WCS and distortion information into an undistorted product</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Link to this heading">#</a></h2>
+<p>An example of running the file through the <code class="docutils literal notranslate"><span class="pre">Image2Pipeline</span></code> is now shown using a simple simulated 4-point dither observation of a galaxy with the MIRI Imager (F1130W filter) produced with <a class="reference external" href="https://wiki.miricle.org/Public/MIRISim_Public">MIRISim v2.3</a> and brought to level 2A using the <code class="docutils literal notranslate"><span class="pre">Detector1Pipeline</span></code>. A background observation is also associated to the science exposures for subtraction.</p>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<p>Start by importing what will be used and set the <code class="docutils literal notranslate"><span class="pre">CRDS_CONTEXT</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">glob</span><span class="o">,</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogNorm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">subprocess</span><span class="w"> </span><span class="kn">import</span> <span class="n">call</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jwst</span><span class="w"> </span><span class="kn">import</span> <span class="n">datamodels</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jwst.associations.lib.member</span><span class="w"> </span><span class="kn">import</span> <span class="n">Member</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jwst.associations.asn_from_list</span><span class="w"> </span><span class="kn">import</span> <span class="n">asn_from_list</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jwst.associations.lib.rules_level2_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">DMSLevel2bBase</span>
+
+<span class="c1"># set the CRDS_CONTEXT</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CRDS_CONTEXT&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;jwst_0641.pmap&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Image2Pipeline</span></code> can be run by passing indivual exposures or datamodels but in this sample case we produce an association file that links the background exposures to the science exposures so it can be subtracted. It is assumed that the science files are in ‘IMA_science’ and the background file is in ‘IMA_background’. The content of the association file is printed for inspection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the science and background files to lists</span>
+<span class="n">my_science_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;IMA_science/*rate.fits&#39;</span><span class="p">)</span>
+<span class="n">my_background_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;IMA_background/*rate.fits&#39;</span><span class="p">)</span>
+<span class="n">my_science_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">my_science_files</span><span class="p">)</span>
+
+<span class="c1"># setup an empty level 2 association structure</span>
+<span class="n">asn</span> <span class="o">=</span> <span class="n">asn_from_list</span><span class="p">(</span><span class="n">my_science_files</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">DMSLevel2bBase</span><span class="p">)</span>
+<span class="n">asn</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;products&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># set the association name</span>
+<span class="n">asn_name</span> <span class="o">=</span> <span class="s1">&#39;my_galaxy&#39;</span>
+
+<span class="c1"># set some metadata</span>
+<span class="n">asn</span><span class="p">[</span><span class="s1">&#39;asn_pool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">asn_name</span> <span class="o">+</span> <span class="s1">&#39;_pool&#39;</span>
+<span class="n">asn</span><span class="p">[</span><span class="s1">&#39;asn_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;image2&#39;</span>
+
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">sci</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_science_files</span><span class="p">):</span>
+    <span class="n">asn</span><span class="o">.</span><span class="n">new_product</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_dither</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">asn_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">sci_member</span> <span class="o">=</span> <span class="n">Member</span><span class="p">({</span><span class="s1">&#39;expname&#39;</span><span class="p">:</span> <span class="n">sci</span><span class="p">,</span> <span class="s1">&#39;exptype&#39;</span><span class="p">:</span> <span class="s1">&#39;science&#39;</span><span class="p">})</span>    
+    <span class="n">new_members</span> <span class="o">=</span> <span class="n">asn</span><span class="o">.</span><span class="n">current_product</span><span class="p">[</span><span class="s1">&#39;members&#39;</span><span class="p">]</span>
+    <span class="n">new_members</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sci_member</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">bkg</span> <span class="ow">in</span> <span class="n">my_background_files</span><span class="p">:</span>
+        <span class="n">bkg_member</span> <span class="o">=</span> <span class="n">Member</span><span class="p">({</span><span class="s1">&#39;expname&#39;</span><span class="p">:</span> <span class="n">bkg</span><span class="p">,</span> <span class="s1">&#39;exptype&#39;</span><span class="p">:</span> <span class="s1">&#39;background&#39;</span><span class="p">})</span>
+        <span class="n">new_members</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bkg_member</span><span class="p">)</span>
+        
+<span class="c1"># print the association and save to file</span>
+<span class="n">name</span><span class="p">,</span> <span class="n">ser</span> <span class="o">=</span> <span class="n">asn</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ser</span><span class="p">)</span>
+
+<span class="n">asn_file</span> <span class="o">=</span> <span class="n">asn_name</span> <span class="o">+</span> <span class="s1">&#39;_lvl2_asn.json&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">asn_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ser</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;asn_type&quot;: &quot;image2&quot;,
+    &quot;asn_rule&quot;: &quot;DMSLevel2bBase&quot;,
+    &quot;version_id&quot;: null,
+    &quot;code_version&quot;: &quot;0.17.1&quot;,
+    &quot;degraded_status&quot;: &quot;No known degraded exposures in association.&quot;,
+    &quot;program&quot;: &quot;noprogram&quot;,
+    &quot;constraints&quot;: &quot;No constraints&quot;,
+    &quot;asn_id&quot;: &quot;a3001&quot;,
+    &quot;asn_pool&quot;: &quot;my_galaxy_pool&quot;,
+    &quot;products&quot;: [
+        {
+            &quot;name&quot;: &quot;my_galaxy_dither1&quot;,
+            &quot;members&quot;: [
+                {
+                    &quot;expname&quot;: &quot;IMA_science/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;,
+                    &quot;exptype&quot;: &quot;science&quot;
+                },
+                {
+                    &quot;expname&quot;: &quot;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;,
+                    &quot;exptype&quot;: &quot;background&quot;
+                }
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;my_galaxy_dither2&quot;,
+            &quot;members&quot;: [
+                {
+                    &quot;expname&quot;: &quot;IMA_science/det_image_seq2_MIRIMAGE_F1130Wexp1_rate.fits&quot;,
+                    &quot;exptype&quot;: &quot;science&quot;
+                },
+                {
+                    &quot;expname&quot;: &quot;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;,
+                    &quot;exptype&quot;: &quot;background&quot;
+                }
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;my_galaxy_dither3&quot;,
+            &quot;members&quot;: [
+                {
+                    &quot;expname&quot;: &quot;IMA_science/det_image_seq3_MIRIMAGE_F1130Wexp1_rate.fits&quot;,
+                    &quot;exptype&quot;: &quot;science&quot;
+                },
+                {
+                    &quot;expname&quot;: &quot;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;,
+                    &quot;exptype&quot;: &quot;background&quot;
+                }
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;my_galaxy_dither4&quot;,
+            &quot;members&quot;: [
+                {
+                    &quot;expname&quot;: &quot;IMA_science/det_image_seq4_MIRIMAGE_F1130Wexp1_rate.fits&quot;,
+                    &quot;exptype&quot;: &quot;science&quot;
+                },
+                {
+                    &quot;expname&quot;: &quot;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;,
+                    &quot;exptype&quot;: &quot;background&quot;
+                }
+            ]
+        }
+    ]
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import Image2Pipeline and print the docstring to show some information</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">jwst.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image2Pipeline</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Image2Pipeline</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Image2Pipeline: Processes JWST imaging-mode slope data from Level-2a to
+    Level-2b.
+
+    Included steps are:
+    background_subtraction, assign_wcs, flat_field, photom and resample.
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>The association file is passed as input. The output level 2B files will be saved in <code class="docutils literal notranslate"><span class="pre">my_output_dir</span></code> as <code class="docutils literal notranslate"><span class="pre">_cal.fits</span></code>.</p>
+<p><em>Parameters used:</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">save_results</span></code>: boolean, optional, default=False<br />
+     save the results to file</p>
+<p><code class="docutils literal notranslate"><span class="pre">output_dir</span></code> : boolean, optional, default is the working directory<br />
+     the location to save the output</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">Image2Pipeline</span></code> will return the level 2B datamodel for each exposure as a list of datamodels so we set these to <code class="docutils literal notranslate"><span class="pre">dm_cont</span></code>. The output filenames will be determined by the <code class="docutils literal notranslate"><span class="pre">asn_name</span></code> in the association file which was set in the cell above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># user specified</span>
+<span class="n">my_output_dir</span> <span class="o">=</span> <span class="s1">&#39;demo_output&#39;</span>
+
+<span class="c1"># the output directory should be created if it doesn&#39;t exist</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">my_output_dir</span><span class="p">):</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">my_output_dir</span><span class="p">)</span>
+
+<span class="c1"># run the pipeline</span>
+<span class="n">dm_cont</span> <span class="o">=</span> <span class="n">Image2Pipeline</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">asn_file</span><span class="p">,</span> <span class="n">save_results</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="n">my_output_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:22:35,344 - CRDS - ERROR -  Error determining best reference for &#39;pars-backgroundstep&#39;  =   Unknown reference type &#39;pars-backgroundstep&#39;
+2020-10-14 14:22:35,443 - CRDS - ERROR -  Error determining best reference for &#39;pars-assignwcsstep&#39;  =   Unknown reference type &#39;pars-assignwcsstep&#39;
+2020-10-14 14:22:35,489 - CRDS - ERROR -  Error determining best reference for &#39;pars-flatfieldstep&#39;  =   Unknown reference type &#39;pars-flatfieldstep&#39;
+2020-10-14 14:22:35,535 - CRDS - ERROR -  Error determining best reference for &#39;pars-photomstep&#39;  =   Unknown reference type &#39;pars-photomstep&#39;
+2020-10-14 14:22:35,583 - CRDS - ERROR -  Error determining best reference for &#39;pars-resamplestep&#39;  =   Unknown reference type &#39;pars-resamplestep&#39;
+2020-10-14 14:22:35,628 - CRDS - ERROR -  Error determining best reference for &#39;pars-image2pipeline&#39;  =   Unknown reference type &#39;pars-image2pipeline&#39;
+2020-10-14 14:22:35,633 - stpipe.Image2Pipeline - INFO - Image2Pipeline instance created.
+2020-10-14 14:22:35,635 - stpipe.Image2Pipeline.bkg_subtract - INFO - BackgroundStep instance created.
+2020-10-14 14:22:35,636 - stpipe.Image2Pipeline.assign_wcs - INFO - AssignWcsStep instance created.
+2020-10-14 14:22:35,638 - stpipe.Image2Pipeline.flat_field - INFO - FlatFieldStep instance created.
+2020-10-14 14:22:35,640 - stpipe.Image2Pipeline.photom - INFO - PhotomStep instance created.
+2020-10-14 14:22:35,642 - stpipe.Image2Pipeline.resample - INFO - ResampleStep instance created.
+2020-10-14 14:22:35,721 - stpipe.Image2Pipeline - INFO - Step Image2Pipeline running with args (&#39;my_galaxy_lvl2_asn.json&#39;,).
+2020-10-14 14:22:35,726 - stpipe.Image2Pipeline - INFO - Step Image2Pipeline parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: &#39;demo_output&#39;, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;save_bsub&#39;: False, &#39;steps&#39;: {&#39;bkg_subtract&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;sigma&#39;: 3.0, &#39;maxiters&#39;: None}, &#39;assign_wcs&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;slit_y_low&#39;: -0.55, &#39;slit_y_high&#39;: 0.55}, &#39;flat_field&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;save_interpolated_flat&#39;: False, &#39;user_supplied_flat&#39;: None, &#39;inverse&#39;: False}, &#39;photom&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;inverse&#39;: False, &#39;source_type&#39;: None}, &#39;resample&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;pixfrac&#39;: 1.0, &#39;kernel&#39;: &#39;square&#39;, &#39;fillval&#39;: &#39;INDEF&#39;, &#39;weight_type&#39;: &#39;exptime&#39;, &#39;single&#39;: False, &#39;blendheaders&#39;: True}}}
+2020-10-14 14:22:35,793 - stpipe.Image2Pipeline - INFO - Prefetching reference files for dataset: &#39;det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&#39; reftypes = [&#39;area&#39;, &#39;camera&#39;, &#39;collimator&#39;, &#39;dflat&#39;, &#39;disperser&#39;, &#39;distortion&#39;, &#39;drizpars&#39;, &#39;fflat&#39;, &#39;filteroffset&#39;, &#39;flat&#39;, &#39;fore&#39;, &#39;fpa&#39;, &#39;ifufore&#39;, &#39;ifupost&#39;, &#39;ifuslicer&#39;, &#39;msa&#39;, &#39;ote&#39;, &#39;photom&#39;, &#39;regions&#39;, &#39;sflat&#39;, &#39;specwcs&#39;, &#39;wavelengthrange&#39;, &#39;wfssbkg&#39;]
+2020-10-14 14:22:35,801 - stpipe.Image2Pipeline - INFO - Prefetch for AREA reference file is &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_area_0004.fits&#39;.
+2020-10-14 14:22:35,802 - stpipe.Image2Pipeline - INFO - Prefetch for CAMERA reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,802 - stpipe.Image2Pipeline - INFO - Prefetch for COLLIMATOR reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,803 - stpipe.Image2Pipeline - INFO - Prefetch for DFLAT reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,803 - stpipe.Image2Pipeline - INFO - Prefetch for DISPERSER reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,804 - stpipe.Image2Pipeline - INFO - Prefetch for DISTORTION reference file is &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_distortion_0028.asdf&#39;.
+2020-10-14 14:22:35,805 - stpipe.Image2Pipeline - INFO - Prefetch for DRIZPARS reference file is &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_drizpars_0001.fits&#39;.
+2020-10-14 14:22:35,806 - stpipe.Image2Pipeline - INFO - Prefetch for FFLAT reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,807 - stpipe.Image2Pipeline - INFO - Prefetch for FILTEROFFSET reference file is &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_filteroffset_0005.asdf&#39;.
+2020-10-14 14:22:35,808 - stpipe.Image2Pipeline - INFO - Prefetch for FLAT reference file is &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_flat_0508.fits&#39;.
+2020-10-14 14:22:35,809 - stpipe.Image2Pipeline - INFO - Prefetch for FORE reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,809 - stpipe.Image2Pipeline - INFO - Prefetch for FPA reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,810 - stpipe.Image2Pipeline - INFO - Prefetch for IFUFORE reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,810 - stpipe.Image2Pipeline - INFO - Prefetch for IFUPOST reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,811 - stpipe.Image2Pipeline - INFO - Prefetch for IFUSLICER reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,812 - stpipe.Image2Pipeline - INFO - Prefetch for MSA reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,812 - stpipe.Image2Pipeline - INFO - Prefetch for OTE reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,813 - stpipe.Image2Pipeline - INFO - Prefetch for PHOTOM reference file is &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_photom_0044.fits&#39;.
+2020-10-14 14:22:35,814 - stpipe.Image2Pipeline - INFO - Prefetch for REGIONS reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,815 - stpipe.Image2Pipeline - INFO - Prefetch for SFLAT reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,816 - stpipe.Image2Pipeline - INFO - Prefetch for SPECWCS reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,817 - stpipe.Image2Pipeline - INFO - Prefetch for WAVELENGTHRANGE reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,817 - stpipe.Image2Pipeline - INFO - Prefetch for WFSSBKG reference file is &#39;N/A&#39;.
+2020-10-14 14:22:35,818 - stpipe.Image2Pipeline - INFO - Starting calwebb_image2 ...
+2020-10-14 14:22:35,830 - stpipe.Image2Pipeline - INFO - Processing product my_galaxy_dither1
+2020-10-14 14:22:35,831 - stpipe.Image2Pipeline - INFO - Working on input IMA_science/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits ...
+2020-10-14 14:22:35,930 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract running with args (&lt;ImageModel(1024, 1032) from det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&gt;, [&#39;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&#39;]).
+2020-10-14 14:22:35,932 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;bsub&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;sigma&#39;: 3.0, &#39;maxiters&#39;: None}
+2020-10-14 14:22:36,319 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract done
+2020-10-14 14:22:36,372 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs running with args (&lt;ImageModel(1024, 1032) from det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:36,373 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;slit_y_low&#39;: -0.55, &#39;slit_y_high&#39;: 0.55}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:22:36,639 - stpipe.Image2Pipeline.assign_wcs - INFO - Created a MIRI mir_image pipeline with references {&#39;distortion&#39;: &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_distortion_0028.asdf&#39;, &#39;filteroffset&#39;: &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_filteroffset_0005.asdf&#39;, &#39;specwcs&#39;: None, &#39;regions&#39;: None, &#39;wavelengthrange&#39;: None, &#39;camera&#39;: None, &#39;collimator&#39;: None, &#39;disperser&#39;: None, &#39;fore&#39;: None, &#39;fpa&#39;: None, &#39;msa&#39;: None, &#39;ote&#39;: None, &#39;ifupost&#39;: None, &#39;ifufore&#39;: None, &#39;ifuslicer&#39;: None}
+2020-10-14 14:22:36,673 - stpipe.Image2Pipeline.assign_wcs - INFO - Update S_REGION to POLYGON ICRS  0.019410529 -0.016138544 0.021878136 0.015048625 359.990819026 0.017621279 359.988011958 -0.013579591
+2020-10-14 14:22:36,674 - stpipe.Image2Pipeline.assign_wcs - INFO - assign_wcs updated S_REGION to POLYGON ICRS  0.019410529 -0.016138544 0.021878136 0.015048625 359.990819026 0.017621279 359.988011958 -0.013579591
+2020-10-14 14:22:36,675 - stpipe.Image2Pipeline.assign_wcs - INFO - COMPLETED assign_wcs
+2020-10-14 14:22:36,679 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs done
+2020-10-14 14:22:36,743 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field running with args (&lt;ImageModel(1024, 1032) from det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:36,745 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;save_interpolated_flat&#39;: False, &#39;user_supplied_flat&#39;: None, &#39;inverse&#39;: False}
+2020-10-14 14:22:36,835 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_PARTIAL_DATA does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:36,836 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_LOW_QUAL does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:36,836 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_UNRELIABLE_ERROR does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:36,843 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword DIFF_PATTERN does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:36,985 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field done
+2020-10-14 14:22:37,038 - stpipe.Image2Pipeline.photom - INFO - Step photom running with args (&lt;ImageModel(1024, 1032) from det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:37,039 - stpipe.Image2Pipeline.photom - INFO - Step photom parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;inverse&#39;: False, &#39;source_type&#39;: None}
+2020-10-14 14:22:37,050 - stpipe.Image2Pipeline.photom - INFO - Using photom reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_photom_0044.fits
+2020-10-14 14:22:37,050 - stpipe.Image2Pipeline.photom - INFO - Using area reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_area_0004.fits
+2020-10-14 14:22:37,117 - stpipe.Image2Pipeline.photom - INFO - Using instrument: MIRI
+2020-10-14 14:22:37,117 - stpipe.Image2Pipeline.photom - INFO -  detector: MIRIMAGE
+2020-10-14 14:22:37,118 - stpipe.Image2Pipeline.photom - INFO -  exp_type: MIR_IMAGE
+2020-10-14 14:22:37,119 - stpipe.Image2Pipeline.photom - INFO -  filter: F1130W
+2020-10-14 14:22:37,171 - stpipe.Image2Pipeline.photom - INFO - Pixel area map copied to output.
+2020-10-14 14:22:37,172 - stpipe.Image2Pipeline.photom - INFO -  subarray: FULL
+2020-10-14 14:22:37,173 - stpipe.Image2Pipeline.photom - INFO - PHOTMJSR value: 2.44947
+2020-10-14 14:22:37,182 - stpipe.Image2Pipeline.photom - INFO - Step photom done
+2020-10-14 14:22:37,249 - stpipe.Image2Pipeline.resample - INFO - Step resample running with args (&lt;ImageModel(1024, 1032) from det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:37,250 - stpipe.Image2Pipeline.resample - INFO - Step resample parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;i2d&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;pixfrac&#39;: 1.0, &#39;kernel&#39;: &#39;square&#39;, &#39;fillval&#39;: &#39;INDEF&#39;, &#39;weight_type&#39;: &#39;exptime&#39;, &#39;single&#39;: False, &#39;blendheaders&#39;: True}
+2020-10-14 14:22:37,268 - stpipe.Image2Pipeline.resample - INFO - Drizpars reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_drizpars_0001.fits
+2020-10-14 14:22:37,876 - stpipe.Image2Pipeline.resample - INFO - Drizzling (1024, 1032) --&gt; (1023, 1023)
+2020-10-14 14:22:38,308 - stpipe.Image2Pipeline.resample - INFO - Update S_REGION to POLYGON ICRS  0.019358646 -0.016334386 0.022108876 0.015005126 359.990738698 0.017758047 359.987988468 -0.013581465
+2020-10-14 14:22:38,449 - stpipe.Image2Pipeline.resample - INFO - Saved model in demo_output/my_galaxy_dither1_i2d.fits
+2020-10-14 14:22:38,450 - stpipe.Image2Pipeline.resample - INFO - Step resample done
+2020-10-14 14:22:38,450 - stpipe.Image2Pipeline - INFO - Finished processing product my_galaxy_dither1
+2020-10-14 14:22:38,451 - stpipe.Image2Pipeline - INFO - Processing product my_galaxy_dither2
+2020-10-14 14:22:38,451 - stpipe.Image2Pipeline - INFO - Working on input IMA_science/det_image_seq2_MIRIMAGE_F1130Wexp1_rate.fits ...
+2020-10-14 14:22:38,569 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract running with args (&lt;ImageModel(1024, 1032) from det_image_seq2_MIRIMAGE_F1130Wexp1_rate.fits&gt;, [&#39;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&#39;]).
+2020-10-14 14:22:38,571 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;bsub&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;sigma&#39;: 3.0, &#39;maxiters&#39;: None}
+2020-10-14 14:22:38,935 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract done
+2020-10-14 14:22:38,998 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs running with args (&lt;ImageModel(1024, 1032) from det_image_seq2_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:38,999 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;assign_wcs&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;slit_y_low&#39;: -0.55, &#39;slit_y_high&#39;: 0.55}
+2020-10-14 14:22:39,127 - stpipe.Image2Pipeline.assign_wcs - INFO - Created a MIRI mir_image pipeline with references {&#39;distortion&#39;: &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_distortion_0028.asdf&#39;, &#39;filteroffset&#39;: &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_filteroffset_0005.asdf&#39;, &#39;specwcs&#39;: None, &#39;regions&#39;: None, &#39;wavelengthrange&#39;: None, &#39;camera&#39;: None, &#39;collimator&#39;: None, &#39;disperser&#39;: None, &#39;fore&#39;: None, &#39;fpa&#39;: None, &#39;msa&#39;: None, &#39;ote&#39;: None, &#39;ifupost&#39;: None, &#39;ifufore&#39;: None, &#39;ifuslicer&#39;: None}
+2020-10-14 14:22:39,162 - stpipe.Image2Pipeline.assign_wcs - INFO - Update S_REGION to POLYGON ICRS  0.020049678 -0.017460337 0.022517284 0.013726832 359.991458175 0.016299486 359.988651107 -0.014901383
+2020-10-14 14:22:39,163 - stpipe.Image2Pipeline.assign_wcs - INFO - assign_wcs updated S_REGION to POLYGON ICRS  0.020049678 -0.017460337 0.022517284 0.013726832 359.991458175 0.016299486 359.988651107 -0.014901383
+2020-10-14 14:22:39,163 - stpipe.Image2Pipeline.assign_wcs - INFO - COMPLETED assign_wcs
+2020-10-14 14:22:39,167 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs done
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:22:39,227 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field running with args (&lt;ImageModel(1024, 1032) from det_image_seq2_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:39,229 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;flat_field&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;save_interpolated_flat&#39;: False, &#39;user_supplied_flat&#39;: None, &#39;inverse&#39;: False}
+2020-10-14 14:22:39,289 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_PARTIAL_DATA does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:39,290 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_LOW_QUAL does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:39,290 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_UNRELIABLE_ERROR does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:39,297 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword DIFF_PATTERN does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:39,389 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field done
+2020-10-14 14:22:39,456 - stpipe.Image2Pipeline.photom - INFO - Step photom running with args (&lt;ImageModel(1024, 1032) from det_image_seq2_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:39,458 - stpipe.Image2Pipeline.photom - INFO - Step photom parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;photom&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;inverse&#39;: False, &#39;source_type&#39;: None}
+2020-10-14 14:22:39,469 - stpipe.Image2Pipeline.photom - INFO - Using photom reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_photom_0044.fits
+2020-10-14 14:22:39,469 - stpipe.Image2Pipeline.photom - INFO - Using area reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_area_0004.fits
+2020-10-14 14:22:39,536 - stpipe.Image2Pipeline.photom - INFO - Using instrument: MIRI
+2020-10-14 14:22:39,537 - stpipe.Image2Pipeline.photom - INFO -  detector: MIRIMAGE
+2020-10-14 14:22:39,537 - stpipe.Image2Pipeline.photom - INFO -  exp_type: MIR_IMAGE
+2020-10-14 14:22:39,538 - stpipe.Image2Pipeline.photom - INFO -  filter: F1130W
+2020-10-14 14:22:39,563 - stpipe.Image2Pipeline.photom - INFO - Pixel area map copied to output.
+2020-10-14 14:22:39,565 - stpipe.Image2Pipeline.photom - INFO -  subarray: FULL
+2020-10-14 14:22:39,565 - stpipe.Image2Pipeline.photom - INFO - PHOTMJSR value: 2.44947
+2020-10-14 14:22:39,573 - stpipe.Image2Pipeline.photom - INFO - Step photom done
+2020-10-14 14:22:39,635 - stpipe.Image2Pipeline.resample - INFO - Step resample running with args (&lt;ImageModel(1024, 1032) from det_image_seq2_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:39,636 - stpipe.Image2Pipeline.resample - INFO - Step resample parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;i2d&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;pixfrac&#39;: 1.0, &#39;kernel&#39;: &#39;square&#39;, &#39;fillval&#39;: &#39;INDEF&#39;, &#39;weight_type&#39;: &#39;exptime&#39;, &#39;single&#39;: False, &#39;blendheaders&#39;: False}
+2020-10-14 14:22:39,652 - stpipe.Image2Pipeline.resample - INFO - Drizpars reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_drizpars_0001.fits
+2020-10-14 14:22:40,237 - stpipe.Image2Pipeline.resample - INFO - Drizzling (1024, 1032) --&gt; (1023, 1023)
+2020-10-14 14:22:40,671 - stpipe.Image2Pipeline.resample - INFO - Update S_REGION to POLYGON ICRS  0.019997794 -0.017656179 0.022748024 0.013683333 359.991377847 0.016436254 359.988627617 -0.014903258
+2020-10-14 14:22:40,797 - stpipe.Image2Pipeline.resample - INFO - Saved model in demo_output/my_galaxy_dither2_i2d.fits
+2020-10-14 14:22:40,798 - stpipe.Image2Pipeline.resample - INFO - Step resample done
+2020-10-14 14:22:40,798 - stpipe.Image2Pipeline - INFO - Finished processing product my_galaxy_dither2
+2020-10-14 14:22:40,799 - stpipe.Image2Pipeline - INFO - Processing product my_galaxy_dither3
+2020-10-14 14:22:40,799 - stpipe.Image2Pipeline - INFO - Working on input IMA_science/det_image_seq3_MIRIMAGE_F1130Wexp1_rate.fits ...
+2020-10-14 14:22:40,916 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract running with args (&lt;ImageModel(1024, 1032) from det_image_seq3_MIRIMAGE_F1130Wexp1_rate.fits&gt;, [&#39;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&#39;]).
+2020-10-14 14:22:40,917 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;bsub&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;sigma&#39;: 3.0, &#39;maxiters&#39;: None}
+2020-10-14 14:22:41,291 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract done
+2020-10-14 14:22:41,371 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs running with args (&lt;ImageModel(1024, 1032) from det_image_seq3_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:41,373 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;assign_wcs&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;slit_y_low&#39;: -0.55, &#39;slit_y_high&#39;: 0.55}
+2020-10-14 14:22:41,561 - stpipe.Image2Pipeline.assign_wcs - INFO - Created a MIRI mir_image pipeline with references {&#39;distortion&#39;: &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_distortion_0028.asdf&#39;, &#39;filteroffset&#39;: &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_filteroffset_0005.asdf&#39;, &#39;specwcs&#39;: None, &#39;regions&#39;: None, &#39;wavelengthrange&#39;: None, &#39;camera&#39;: None, &#39;collimator&#39;: None, &#39;disperser&#39;: None, &#39;fore&#39;: None, &#39;fpa&#39;: None, &#39;msa&#39;: None, &#39;ote&#39;: None, &#39;ifupost&#39;: None, &#39;ifufore&#39;: None, &#39;ifuslicer&#39;: None}
+2020-10-14 14:22:41,597 - stpipe.Image2Pipeline.assign_wcs - INFO - Update S_REGION to POLYGON ICRS  0.020280823 -0.019911110 0.022748429 0.011276059 359.991689320 0.013848713 359.988882252 -0.017352157
+2020-10-14 14:22:41,598 - stpipe.Image2Pipeline.assign_wcs - INFO - assign_wcs updated S_REGION to POLYGON ICRS  0.020280823 -0.019911110 0.022748429 0.011276059 359.991689320 0.013848713 359.988882252 -0.017352157
+2020-10-14 14:22:41,599 - stpipe.Image2Pipeline.assign_wcs - INFO - COMPLETED assign_wcs
+2020-10-14 14:22:41,603 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs done
+2020-10-14 14:22:41,680 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field running with args (&lt;ImageModel(1024, 1032) from det_image_seq3_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:41,682 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;flat_field&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;save_interpolated_flat&#39;: False, &#39;user_supplied_flat&#39;: None, &#39;inverse&#39;: False}
+2020-10-14 14:22:41,746 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_PARTIAL_DATA does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:41,747 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_LOW_QUAL does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:41,748 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_UNRELIABLE_ERROR does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:41,757 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword DIFF_PATTERN does not correspond to an existing DQ mnemonic, so will be ignored
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:22:41,861 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field done
+2020-10-14 14:22:41,936 - stpipe.Image2Pipeline.photom - INFO - Step photom running with args (&lt;ImageModel(1024, 1032) from det_image_seq3_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:41,938 - stpipe.Image2Pipeline.photom - INFO - Step photom parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;photom&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;inverse&#39;: False, &#39;source_type&#39;: None}
+2020-10-14 14:22:41,949 - stpipe.Image2Pipeline.photom - INFO - Using photom reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_photom_0044.fits
+2020-10-14 14:22:41,950 - stpipe.Image2Pipeline.photom - INFO - Using area reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_area_0004.fits
+2020-10-14 14:22:42,021 - stpipe.Image2Pipeline.photom - INFO - Using instrument: MIRI
+2020-10-14 14:22:42,022 - stpipe.Image2Pipeline.photom - INFO -  detector: MIRIMAGE
+2020-10-14 14:22:42,022 - stpipe.Image2Pipeline.photom - INFO -  exp_type: MIR_IMAGE
+2020-10-14 14:22:42,023 - stpipe.Image2Pipeline.photom - INFO -  filter: F1130W
+2020-10-14 14:22:42,049 - stpipe.Image2Pipeline.photom - INFO - Pixel area map copied to output.
+2020-10-14 14:22:42,050 - stpipe.Image2Pipeline.photom - INFO -  subarray: FULL
+2020-10-14 14:22:42,051 - stpipe.Image2Pipeline.photom - INFO - PHOTMJSR value: 2.44947
+2020-10-14 14:22:42,060 - stpipe.Image2Pipeline.photom - INFO - Step photom done
+2020-10-14 14:22:42,129 - stpipe.Image2Pipeline.resample - INFO - Step resample running with args (&lt;ImageModel(1024, 1032) from det_image_seq3_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:42,131 - stpipe.Image2Pipeline.resample - INFO - Step resample parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;i2d&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;pixfrac&#39;: 1.0, &#39;kernel&#39;: &#39;square&#39;, &#39;fillval&#39;: &#39;INDEF&#39;, &#39;weight_type&#39;: &#39;exptime&#39;, &#39;single&#39;: False, &#39;blendheaders&#39;: False}
+2020-10-14 14:22:42,148 - stpipe.Image2Pipeline.resample - INFO - Drizpars reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_drizpars_0001.fits
+2020-10-14 14:22:42,728 - stpipe.Image2Pipeline.resample - INFO - Drizzling (1024, 1032) --&gt; (1023, 1023)
+2020-10-14 14:22:43,150 - stpipe.Image2Pipeline.resample - INFO - Update S_REGION to POLYGON ICRS  0.020228939 -0.020106952 0.022979169 0.011232559 359.991608992 0.013985480 359.988858761 -0.017354031
+2020-10-14 14:22:43,337 - stpipe.Image2Pipeline.resample - INFO - Saved model in demo_output/my_galaxy_dither3_i2d.fits
+2020-10-14 14:22:43,338 - stpipe.Image2Pipeline.resample - INFO - Step resample done
+2020-10-14 14:22:43,339 - stpipe.Image2Pipeline - INFO - Finished processing product my_galaxy_dither3
+2020-10-14 14:22:43,340 - stpipe.Image2Pipeline - INFO - Processing product my_galaxy_dither4
+2020-10-14 14:22:43,340 - stpipe.Image2Pipeline - INFO - Working on input IMA_science/det_image_seq4_MIRIMAGE_F1130Wexp1_rate.fits ...
+2020-10-14 14:22:43,464 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract running with args (&lt;ImageModel(1024, 1032) from det_image_seq4_MIRIMAGE_F1130Wexp1_rate.fits&gt;, [&#39;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&#39;]).
+2020-10-14 14:22:43,465 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;bsub&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;sigma&#39;: 3.0, &#39;maxiters&#39;: None}
+2020-10-14 14:22:43,841 - stpipe.Image2Pipeline.bkg_subtract - INFO - Step bkg_subtract done
+2020-10-14 14:22:43,904 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs running with args (&lt;ImageModel(1024, 1032) from det_image_seq4_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:43,905 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;assign_wcs&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;slit_y_low&#39;: -0.55, &#39;slit_y_high&#39;: 0.55}
+2020-10-14 14:22:44,036 - stpipe.Image2Pipeline.assign_wcs - INFO - Created a MIRI mir_image pipeline with references {&#39;distortion&#39;: &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_distortion_0028.asdf&#39;, &#39;filteroffset&#39;: &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_filteroffset_0005.asdf&#39;, &#39;specwcs&#39;: None, &#39;regions&#39;: None, &#39;wavelengthrange&#39;: None, &#39;camera&#39;: None, &#39;collimator&#39;: None, &#39;disperser&#39;: None, &#39;fore&#39;: None, &#39;fpa&#39;: None, &#39;msa&#39;: None, &#39;ote&#39;: None, &#39;ifupost&#39;: None, &#39;ifufore&#39;: None, &#39;ifuslicer&#39;: None}
+2020-10-14 14:22:44,067 - stpipe.Image2Pipeline.assign_wcs - INFO - Update S_REGION to POLYGON ICRS  0.021816705 -0.019412262 0.024284311 0.011774907 359.993225201 0.014347561 359.990418134 -0.016853309
+2020-10-14 14:22:44,068 - stpipe.Image2Pipeline.assign_wcs - INFO - assign_wcs updated S_REGION to POLYGON ICRS  0.021816705 -0.019412262 0.024284311 0.011774907 359.993225201 0.014347561 359.990418134 -0.016853309
+2020-10-14 14:22:44,069 - stpipe.Image2Pipeline.assign_wcs - INFO - COMPLETED assign_wcs
+2020-10-14 14:22:44,073 - stpipe.Image2Pipeline.assign_wcs - INFO - Step assign_wcs done
+2020-10-14 14:22:44,135 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field running with args (&lt;ImageModel(1024, 1032) from det_image_seq4_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:44,137 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;flat_field&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;save_interpolated_flat&#39;: False, &#39;user_supplied_flat&#39;: None, &#39;inverse&#39;: False}
+2020-10-14 14:22:44,195 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_PARTIAL_DATA does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:44,196 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_LOW_QUAL does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:44,196 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword CDP_UNRELIABLE_ERROR does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:44,203 - stpipe.Image2Pipeline.flat_field - WARNING - Keyword DIFF_PATTERN does not correspond to an existing DQ mnemonic, so will be ignored
+2020-10-14 14:22:44,296 - stpipe.Image2Pipeline.flat_field - INFO - Step flat_field done
+2020-10-14 14:22:44,368 - stpipe.Image2Pipeline.photom - INFO - Step photom running with args (&lt;ImageModel(1024, 1032) from det_image_seq4_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:44,369 - stpipe.Image2Pipeline.photom - INFO - Step photom parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;photom&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;inverse&#39;: False, &#39;source_type&#39;: None}
+2020-10-14 14:22:44,381 - stpipe.Image2Pipeline.photom - INFO - Using photom reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_photom_0044.fits
+2020-10-14 14:22:44,382 - stpipe.Image2Pipeline.photom - INFO - Using area reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_area_0004.fits
+2020-10-14 14:22:44,453 - stpipe.Image2Pipeline.photom - INFO - Using instrument: MIRI
+2020-10-14 14:22:44,453 - stpipe.Image2Pipeline.photom - INFO -  detector: MIRIMAGE
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:22:44,454 - stpipe.Image2Pipeline.photom - INFO -  exp_type: MIR_IMAGE
+2020-10-14 14:22:44,455 - stpipe.Image2Pipeline.photom - INFO -  filter: F1130W
+2020-10-14 14:22:44,481 - stpipe.Image2Pipeline.photom - INFO - Pixel area map copied to output.
+2020-10-14 14:22:44,483 - stpipe.Image2Pipeline.photom - INFO -  subarray: FULL
+2020-10-14 14:22:44,484 - stpipe.Image2Pipeline.photom - INFO - PHOTMJSR value: 2.44947
+2020-10-14 14:22:44,492 - stpipe.Image2Pipeline.photom - INFO - Step photom done
+2020-10-14 14:22:44,560 - stpipe.Image2Pipeline.resample - INFO - Step resample running with args (&lt;ImageModel(1024, 1032) from det_image_seq4_MIRIMAGE_F1130Wexp1_rate.fits&gt;,).
+2020-10-14 14:22:44,561 - stpipe.Image2Pipeline.resample - INFO - Step resample parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;i2d&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;pixfrac&#39;: 1.0, &#39;kernel&#39;: &#39;square&#39;, &#39;fillval&#39;: &#39;INDEF&#39;, &#39;weight_type&#39;: &#39;exptime&#39;, &#39;single&#39;: False, &#39;blendheaders&#39;: False}
+2020-10-14 14:22:44,578 - stpipe.Image2Pipeline.resample - INFO - Drizpars reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_drizpars_0001.fits
+2020-10-14 14:22:45,150 - stpipe.Image2Pipeline.resample - INFO - Drizzling (1024, 1032) --&gt; (1023, 1023)
+2020-10-14 14:22:45,582 - stpipe.Image2Pipeline.resample - INFO - Update S_REGION to POLYGON ICRS  0.021764821 -0.019608104 0.024515051 0.011731407 359.993144874 0.014484328 359.990394643 -0.016855183
+2020-10-14 14:22:45,706 - stpipe.Image2Pipeline.resample - INFO - Saved model in demo_output/my_galaxy_dither4_i2d.fits
+2020-10-14 14:22:45,706 - stpipe.Image2Pipeline.resample - INFO - Step resample done
+2020-10-14 14:22:45,707 - stpipe.Image2Pipeline - INFO - Finished processing product my_galaxy_dither4
+2020-10-14 14:22:45,708 - stpipe.Image2Pipeline - INFO - ... ending calwebb_image2
+2020-10-14 14:22:45,944 - stpipe.Image2Pipeline - INFO - Saved model in demo_output/my_galaxy_dither1_cal.fits
+2020-10-14 14:22:46,178 - stpipe.Image2Pipeline - INFO - Saved model in demo_output/my_galaxy_dither2_cal.fits
+2020-10-14 14:22:46,406 - stpipe.Image2Pipeline - INFO - Saved model in demo_output/my_galaxy_dither3_cal.fits
+2020-10-14 14:22:46,643 - stpipe.Image2Pipeline - INFO - Saved model in demo_output/my_galaxy_dither4_cal.fits
+2020-10-14 14:22:46,644 - stpipe.Image2Pipeline - INFO - Step Image2Pipeline done
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot the before (rate) and after (cal) images for the first dither position</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># open the input image as a jwst data model</span>
+<span class="k">with</span> <span class="n">datamodels</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">my_science_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">as</span> <span class="n">in_dm</span><span class="p">:</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">in_dm</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;DMS Level 2A (rate)&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dm_cont</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;DMS Level 2B (cal)&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:22:52,098 - stpipe - WARNING - /Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+<img alt="../../_images/116c3ce4280f3c947ab7e28b46b1a0f301d594b93fa5904a6bdf9633ab6794aa.png" src="../../_images/116c3ce4280f3c947ab7e28b46b1a0f301d594b93fa5904a6bdf9633ab6794aa.png" />
+</div>
+</div>
+</section>
+<section id="command-line">
+<h2>Command line<a class="headerlink" href="#command-line" title="Link to this heading">#</a></h2>
+<p>To achieve the same result from the command line there are a couple of options. However, one must still generate the association file. In this case, it is best to copy the template above into a text file and save it to <code class="docutils literal notranslate"><span class="pre">my_galaxy_lvl2_asn.json</span></code>. The content is printed here for convenience.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;asn_type&quot;</span><span class="p">:</span> <span class="s2">&quot;image2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;asn_rule&quot;</span><span class="p">:</span> <span class="s2">&quot;DMSLevel2bBase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;version_id&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;code_version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.13.7&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;degraded_status&quot;</span><span class="p">:</span> <span class="s2">&quot;No known degraded exposures in association.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;program&quot;</span><span class="p">:</span> <span class="s2">&quot;noprogram&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;products&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_galaxy_dither1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_science/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;science&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;background&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_galaxy_dither2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_science/det_image_seq2_MIRIMAGE_F1130Wexp1_rate.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;science&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;background&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_galaxy_dither3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_science/det_image_seq3_MIRIMAGE_F1130Wexp1_rate.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;science&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;background&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_galaxy_dither4&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_science/det_image_seq4_MIRIMAGE_F1130Wexp1_rate.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;science&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_background/det_image_seq1_MIRIMAGE_F1130Wexp1_rate.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;background&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;asn_pool&quot;</span><span class="p">:</span> <span class="s2">&quot;my_galaxy_pool&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Option 1:</strong>
+Run the <code class="docutils literal notranslate"><span class="pre">Image2Pipeline</span></code> class using the <code class="docutils literal notranslate"><span class="pre">strun</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>demo_output
+
+strun<span class="w"> </span>jwst.pipeline.Image2Pipeline<span class="w"> </span>my_galaxy_lvl2_asn.json<span class="w"> </span>--output_dir<span class="w"> </span>demo_output
+</pre></div>
+</div>
+<p>This will produce the same output file in the user-defined <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code></p>
+<p><strong>Option 2:</strong>
+Collect the pipeline configuration files in your working directory (if they are not already there) using <code class="docutils literal notranslate"><span class="pre">collect_pipeline_configs</span></code> and then run the <code class="docutils literal notranslate"><span class="pre">Image2Pipeline</span></code> using the <code class="docutils literal notranslate"><span class="pre">strun</span></code> command with the associated <code class="docutils literal notranslate"><span class="pre">calwebb_image2.cfg</span></code> file. This option is a little more flexible as one can create edit the cfg files, use them again, etc.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>demo_output
+
+collect_pipeline_cfgs<span class="w"> </span>cfgs/
+
+strun<span class="w"> </span>cfgs/calwebb_image2.cfg<span class="w"> </span>my_galaxy_lvl2_asn.json<span class="w"> </span>--output_dir<span class="w"> </span>demo_output
+</pre></div>
+</div>
+<p>This will produce the same output file in the user-defined <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code></p>
+</section>
+<section id="further-examples">
+<h2>Further examples<a class="headerlink" href="#further-examples" title="Link to this heading">#</a></h2>
+<p>Other notebooks with more complex examples can be found here:</p>
+<p><em>To be added</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/JWST MIRI Pipeline"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-data">Input data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line">Command line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-examples">Further examples</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Patrick Kavanagh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

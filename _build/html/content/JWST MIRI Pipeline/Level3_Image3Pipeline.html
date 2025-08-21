@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Image3Pipeline (MIRI CALIMAGE3) &#8212; Patrick Kavanagh&#39;s Homepage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/JWST MIRI Pipeline/Level3_Image3Pipeline';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/MIRI_logo.png" class="logo__image only-light" alt="Patrick Kavanagh's Homepage - Home"/>
+    <script>document.write(`<img src="../../_static/MIRI_logo.png" class="logo__image only-dark" alt="Patrick Kavanagh's Homepage - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Patrick Kavanagh
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/JWST MIRI Pipeline/Level3_Image3Pipeline.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Image3Pipeline   (MIRI CALIMAGE3)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-data">Input data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line">Command line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-examples">Further examples</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="image3pipeline-miri-calimage3">
+<h1>Image3Pipeline   (MIRI CALIMAGE3)<a class="headerlink" href="#image3pipeline-miri-calimage3" title="Link to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">Image3Pipeline</span></code> combines the calibrated data from multiple exposures (e.g. a dither or mosaic pattern) into a single rectified (distortion corrected) product. Before being combined, the exposures receive additional corrections for the purpose of astrometric alignment, background matching, and outlier rejection.</p>
+<p>Official documentation for <code class="docutils literal notranslate"><span class="pre">Image3Pipeline</span></code> can be found here:</p>
+<p><a class="reference external" href="https://jwst-pipeline.readthedocs.io/en/latest/jwst/pipeline/calwebb_image3.html">https://jwst-pipeline.readthedocs.io/en/latest/jwst/pipeline/calwebb_image3.html</a></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Image3Pipeline</span></code> comprises a linear series of steps. The steps applied to MIRI data in order are:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Step</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">tweakreg</span></code></p></td>
+<td class="text-left"><p>refine the WCS solution by comparing source catalogues from input images</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">skymatch</span></code></p></td>
+<td class="text-left"><p>compute sky values in a collection of input images that contain both sky and source signal</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">outlier_detection</span></code></p></td>
+<td class="text-left"><p>identification of bad pixels or cosmic-rays that remain in each of the input images</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">resample</span></code></p></td>
+<td class="text-left"><p>resample using WCS and distortion information into an undistorted product</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">source_catalog</span></code></p></td>
+<td class="text-left"><p>resample using WCS and distortion information into an undistorted product</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Link to this heading">#</a></h2>
+<p>An example of running the file through the <code class="docutils literal notranslate"><span class="pre">Image3Pipeline</span></code> is now shown using a simple simulated 4-point dither observation of a galaxy with the MIRI Imager (F1130W filter) produced with <a class="reference external" href="https://wiki.miricle.org/Public/MIRISim_Public">MIRISim v2.3</a> and brought to level 2B using the <code class="docutils literal notranslate"><span class="pre">Detector1Pipeline</span></code> and <code class="docutils literal notranslate"><span class="pre">Image2Pipeline</span></code> modules.</p>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<p>Start by importing what will be used and set the <code class="docutils literal notranslate"><span class="pre">CRDS_CONTEXT</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">glob</span><span class="o">,</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogNorm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">subprocess</span><span class="w"> </span><span class="kn">import</span> <span class="n">call</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jwst</span><span class="w"> </span><span class="kn">import</span> <span class="n">datamodels</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jwst.associations.lib.member</span><span class="w"> </span><span class="kn">import</span> <span class="n">Member</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jwst.associations.asn_from_list</span><span class="w"> </span><span class="kn">import</span> <span class="n">asn_from_list</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils</span><span class="w"> </span><span class="kn">import</span> <span class="n">CircularAperture</span>
+
+<span class="c1"># set the CRDS_CONTEXT</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CRDS_CONTEXT&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;jwst_0641.pmap&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Image3Pipeline</span></code> requires an association file as input that lists the exposures to be combined. The content of the association file is printed for inspection. It is assumed the files are in ‘IMA_science’</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the science and background files to lists</span>
+<span class="n">my_science_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;IMA_science/*cal.fits&#39;</span><span class="p">)</span>
+<span class="n">my_science_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">my_science_files</span><span class="p">)</span>
+
+<span class="c1"># set the association name</span>
+<span class="n">asn_name</span> <span class="o">=</span> <span class="s1">&#39;my_galaxy&#39;</span>
+
+<span class="c1"># create an association</span>
+<span class="n">asn</span> <span class="o">=</span> <span class="n">asn_from_list</span><span class="p">(</span><span class="n">my_science_files</span><span class="p">,</span> <span class="n">product_name</span><span class="o">=</span><span class="n">asn_name</span><span class="p">)</span>
+
+<span class="c1"># set some metadata</span>
+<span class="n">asn</span><span class="p">[</span><span class="s1">&#39;asn_pool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">asn_name</span> <span class="o">+</span> <span class="s1">&#39;_pool&#39;</span>
+<span class="n">asn</span><span class="p">[</span><span class="s1">&#39;asn_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;image3&#39;</span>
+        
+<span class="c1"># print the association and save to file</span>
+<span class="n">name</span><span class="p">,</span> <span class="n">ser</span> <span class="o">=</span> <span class="n">asn</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ser</span><span class="p">)</span>
+
+<span class="n">asn_file</span> <span class="o">=</span> <span class="n">asn_name</span> <span class="o">+</span> <span class="s1">&#39;_lvl3_asn.json&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">asn_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ser</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;asn_type&quot;: &quot;image3&quot;,
+    &quot;asn_rule&quot;: &quot;DMS_Level3_Base&quot;,
+    &quot;version_id&quot;: null,
+    &quot;code_version&quot;: &quot;0.17.1&quot;,
+    &quot;degraded_status&quot;: &quot;No known degraded exposures in association.&quot;,
+    &quot;program&quot;: &quot;noprogram&quot;,
+    &quot;constraints&quot;: &quot;No constraints&quot;,
+    &quot;asn_id&quot;: &quot;a3001&quot;,
+    &quot;target&quot;: &quot;none&quot;,
+    &quot;asn_pool&quot;: &quot;my_galaxy_pool&quot;,
+    &quot;products&quot;: [
+        {
+            &quot;name&quot;: &quot;my_galaxy&quot;,
+            &quot;members&quot;: [
+                {
+                    &quot;expname&quot;: &quot;IMA_science/my_galaxy_dither1_cal.fits&quot;,
+                    &quot;exptype&quot;: &quot;science&quot;
+                },
+                {
+                    &quot;expname&quot;: &quot;IMA_science/my_galaxy_dither2_cal.fits&quot;,
+                    &quot;exptype&quot;: &quot;science&quot;
+                },
+                {
+                    &quot;expname&quot;: &quot;IMA_science/my_galaxy_dither3_cal.fits&quot;,
+                    &quot;exptype&quot;: &quot;science&quot;
+                },
+                {
+                    &quot;expname&quot;: &quot;IMA_science/my_galaxy_dither4_cal.fits&quot;,
+                    &quot;exptype&quot;: &quot;science&quot;
+                }
+            ]
+        }
+    ]
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import Image2Pipeline and print the docstring to show some information</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">jwst.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image3Pipeline</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Image3Pipeline</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Image3Pipeline: Applies level 3 processing to imaging-mode data from
+                    any JWST instrument.
+
+    Included steps are:
+        assign_mtwcs
+        tweakreg
+        skymatch
+        outlier_detection
+        resample
+        source_catalog
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>The association file is passed as input. The output level 2B files will be saved in <code class="docutils literal notranslate"><span class="pre">my_output_dir</span></code> as <code class="docutils literal notranslate"><span class="pre">_cal.fits</span></code>.</p>
+<p><em>Parameters used:</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">save_results</span></code>: boolean, optional, default=False<br />
+     save the results to file</p>
+<p><code class="docutils literal notranslate"><span class="pre">output_dir</span></code> : boolean, optional, default is the working directory<br />
+     the location to save the output</p>
+<p>There are still some issues with the tweakreg step so this is skipped for now. We also set the source detection parameters and explicitly save the output from the <code class="docutils literal notranslate"><span class="pre">source_catalog</span></code> step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># user specified</span>
+<span class="n">my_output_dir</span> <span class="o">=</span> <span class="s1">&#39;demo_output&#39;</span>
+
+<span class="c1"># the output directory should be created if it doesn&#39;t exist</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">my_output_dir</span><span class="p">):</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">my_output_dir</span><span class="p">)</span>
+
+<span class="c1"># run the pipeline</span>
+<span class="n">Image3Pipeline</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">asn_file</span><span class="p">,</span> <span class="n">save_results</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="n">my_output_dir</span><span class="p">,</span>
+                    <span class="n">steps</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;skymatch&#39;</span><span class="p">:{</span><span class="s1">&#39;skip&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">},</span>
+                           <span class="s1">&#39;source_catalog&#39;</span><span class="p">:{</span><span class="s1">&#39;save_results&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;kernel_fwhm&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;snr_threshold&#39;</span><span class="p">:</span> <span class="mf">5.</span><span class="p">}})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:34:49,784 - stpipe - WARNING - /Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+
+2020-10-14 14:34:50,117 - CRDS - ERROR -  Error determining best reference for &#39;pars-assignmtwcsstep&#39;  =   Unknown reference type &#39;pars-assignmtwcsstep&#39;
+2020-10-14 14:34:50,264 - CRDS - ERROR -  Error determining best reference for &#39;pars-tweakregstep&#39;  =   Unknown reference type &#39;pars-tweakregstep&#39;
+2020-10-14 14:34:50,534 - CRDS - ERROR -  Error determining best reference for &#39;pars-skymatchstep&#39;  =   Unknown reference type &#39;pars-skymatchstep&#39;
+2020-10-14 14:34:50,687 - CRDS - ERROR -  Error determining best reference for &#39;pars-outlierdetectionstep&#39;  =   Unknown reference type &#39;pars-outlierdetectionstep&#39;
+2020-10-14 14:34:50,844 - CRDS - ERROR -  Error determining best reference for &#39;pars-resamplestep&#39;  =   Unknown reference type &#39;pars-resamplestep&#39;
+2020-10-14 14:34:51,008 - CRDS - ERROR -  Error determining best reference for &#39;pars-sourcecatalogstep&#39;  =   Unknown reference type &#39;pars-sourcecatalogstep&#39;
+2020-10-14 14:34:51,168 - CRDS - ERROR -  Error determining best reference for &#39;pars-image3pipeline&#39;  =   Unknown reference type &#39;pars-image3pipeline&#39;
+2020-10-14 14:34:51,174 - stpipe.Image3Pipeline - INFO - Image3Pipeline instance created.
+2020-10-14 14:34:51,176 - stpipe.Image3Pipeline.assign_mtwcs - INFO - AssignMTWcsStep instance created.
+2020-10-14 14:34:51,178 - stpipe.Image3Pipeline.tweakreg - INFO - TweakRegStep instance created.
+2020-10-14 14:34:51,180 - stpipe.Image3Pipeline.skymatch - INFO - SkyMatchStep instance created.
+2020-10-14 14:34:51,183 - stpipe.Image3Pipeline.outlier_detection - INFO - OutlierDetectionStep instance created.
+2020-10-14 14:34:51,185 - stpipe.Image3Pipeline.resample - INFO - ResampleStep instance created.
+2020-10-14 14:34:51,187 - stpipe.Image3Pipeline.source_catalog - INFO - SourceCatalogStep instance created.
+2020-10-14 14:34:51,270 - stpipe.Image3Pipeline - INFO - Step Image3Pipeline running with args (&#39;my_galaxy_lvl3_asn.json&#39;,).
+2020-10-14 14:34:51,276 - stpipe.Image3Pipeline - INFO - Step Image3Pipeline parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: &#39;demo_output&#39;, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;steps&#39;: {&#39;assign_mtwcs&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: True, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;assign_mtwcs&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;}, &#39;tweakreg&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;save_catalogs&#39;: False, &#39;catalog_format&#39;: &#39;ecsv&#39;, &#39;kernel_fwhm&#39;: 2.5, &#39;snr_threshold&#39;: 10.0, &#39;brightest&#39;: 1000, &#39;peakmax&#39;: None, &#39;enforce_user_order&#39;: False, &#39;expand_refcat&#39;: False, &#39;minobj&#39;: 15, &#39;searchrad&#39;: 1.0, &#39;use2dhist&#39;: True, &#39;separation&#39;: 0.5, &#39;tolerance&#39;: 1.0, &#39;xoffset&#39;: 0.0, &#39;yoffset&#39;: 0.0, &#39;fitgeometry&#39;: &#39;general&#39;, &#39;nclip&#39;: 3, &#39;sigma&#39;: 3.0, &#39;align_to_gaia&#39;: False, &#39;gaia_catalog&#39;: &#39;GAIADR2&#39;, &#39;min_gaia&#39;: 5, &#39;save_gaia_catalog&#39;: False}, &#39;skymatch&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: True, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;skymethod&#39;: &#39;global+match&#39;, &#39;match_down&#39;: True, &#39;subtract&#39;: False, &#39;stepsize&#39;: None, &#39;skystat&#39;: &#39;mode&#39;, &#39;dqbits&#39;: &#39;0&#39;, &#39;lower&#39;: None, &#39;upper&#39;: None, &#39;nclip&#39;: 5, &#39;lsigma&#39;: 4.0, &#39;usigma&#39;: 4.0, &#39;binwidth&#39;: 0.1}, &#39;outlier_detection&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: False, &#39;input_dir&#39;: &#39;&#39;, &#39;weight_type&#39;: &#39;exptime&#39;, &#39;pixfrac&#39;: 1.0, &#39;kernel&#39;: &#39;square&#39;, &#39;fillval&#39;: &#39;INDEF&#39;, &#39;nlow&#39;: 0, &#39;nhigh&#39;: 0, &#39;maskpt&#39;: 0.7, &#39;grow&#39;: 1, &#39;snr&#39;: &#39;4.0 3.0&#39;, &#39;scale&#39;: &#39;0.5 0.4&#39;, &#39;backg&#39;: 0.0, &#39;save_intermediate_results&#39;: False, &#39;resample_data&#39;: True, &#39;good_bits&#39;: &#39;~DO_NOT_USE&#39;, &#39;scale_detection&#39;: False}, &#39;resample&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;pixfrac&#39;: 1.0, &#39;kernel&#39;: &#39;square&#39;, &#39;fillval&#39;: &#39;INDEF&#39;, &#39;weight_type&#39;: &#39;exptime&#39;, &#39;single&#39;: False, &#39;blendheaders&#39;: True}, &#39;source_catalog&#39;: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;cat&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;bkg_boxsize&#39;: 100, &#39;kernel_fwhm&#39;: 3.0, &#39;snr_threshold&#39;: 5.0, &#39;npixels&#39;: 5, &#39;deblend&#39;: False, &#39;aperture_ee1&#39;: 30, &#39;aperture_ee2&#39;: 50, &#39;aperture_ee3&#39;: 70, &#39;ci1_star_threshold&#39;: 2.0, &#39;ci2_star_threshold&#39;: 1.8}}}
+2020-10-14 14:34:51,451 - stpipe.Image3Pipeline - INFO - Prefetching reference files for dataset: &#39;my_galaxy_dither1_cal.fits&#39; reftypes = [&#39;abvegaoffset&#39;, &#39;apcorr&#39;, &#39;drizpars&#39;]
+2020-10-14 14:34:51,454 - stpipe.Image3Pipeline - INFO - Prefetch for ABVEGAOFFSET reference file is &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_abvegaoffset_0001.asdf&#39;.
+2020-10-14 14:34:51,455 - stpipe.Image3Pipeline - INFO - Prefetch for APCORR reference file is &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_apcorr_0005.fits&#39;.
+2020-10-14 14:34:51,456 - stpipe.Image3Pipeline - INFO - Prefetch for DRIZPARS reference file is &#39;/Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_drizpars_0001.fits&#39;.
+2020-10-14 14:34:51,457 - stpipe.Image3Pipeline - INFO - Starting calwebb_image3 ...
+2020-10-14 14:34:52,170 - stpipe.Image3Pipeline.tweakreg - INFO - Step tweakreg running with args (&lt;ModelContainer&gt;,).
+2020-10-14 14:34:52,172 - stpipe.Image3Pipeline.tweakreg - INFO - Step tweakreg parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: False, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;save_catalogs&#39;: False, &#39;catalog_format&#39;: &#39;ecsv&#39;, &#39;kernel_fwhm&#39;: 2.5, &#39;snr_threshold&#39;: 10.0, &#39;brightest&#39;: 1000, &#39;peakmax&#39;: None, &#39;enforce_user_order&#39;: False, &#39;expand_refcat&#39;: False, &#39;minobj&#39;: 15, &#39;searchrad&#39;: 1.0, &#39;use2dhist&#39;: True, &#39;separation&#39;: 0.5, &#39;tolerance&#39;: 1.0, &#39;xoffset&#39;: 0.0, &#39;yoffset&#39;: 0.0, &#39;fitgeometry&#39;: &#39;general&#39;, &#39;nclip&#39;: 3, &#39;sigma&#39;: 3.0, &#39;align_to_gaia&#39;: False, &#39;gaia_catalog&#39;: &#39;GAIADR2&#39;, &#39;min_gaia&#39;: 5, &#39;save_gaia_catalog&#39;: False}
+2020-10-14 14:34:52,514 - stpipe.Image3Pipeline.tweakreg - WARNING - /Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/photutils/detection/findstars.py:971: NoDetectionsWarning: Sources were found, but none pass the sharpness and roundness criteria.
+  warnings.warn(&#39;Sources were found, but none pass the sharpness &#39;
+
+2020-10-14 14:34:52,517 - stpipe.Image3Pipeline.tweakreg - WARNING - No sources found in my_galaxy_dither1_cal.fits.
+2020-10-14 14:34:52,885 - stpipe.Image3Pipeline.tweakreg - INFO - Detected 1 sources in my_galaxy_dither2_cal.fits.
+2020-10-14 14:34:53,319 - stpipe.Image3Pipeline.tweakreg - INFO - Detected 1 sources in my_galaxy_dither3_cal.fits.
+2020-10-14 14:34:53,653 - stpipe.Image3Pipeline.tweakreg - WARNING - /Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/photutils/detection/findstars.py:940: NoDetectionsWarning: No sources were found.
+  warnings.warn(&#39;No sources were found.&#39;, NoDetectionsWarning)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:34:53,655 - stpipe.Image3Pipeline.tweakreg - WARNING - No sources found in my_galaxy_dither4_cal.fits.
+2020-10-14 14:34:53,670 - stpipe.Image3Pipeline.tweakreg - INFO - 
+2020-10-14 14:34:53,670 - stpipe.Image3Pipeline.tweakreg - INFO - Number of image groups to be aligned: 4.
+2020-10-14 14:34:53,671 - stpipe.Image3Pipeline.tweakreg - INFO - Image groups:
+2020-10-14 14:34:53,719 - stpipe.Image3Pipeline.tweakreg - WARNING - /Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/gwcs/wcs.py:973: DeprecationWarning: Indexing a WCS.pipeline step is deprecated. Use the `frame` and `transform` attributes instead.
+  warnings.warn(&quot;Indexing a WCS.pipeline step is deprecated. &quot;
+
+2020-10-14 14:34:53,719 - stpipe.Image3Pipeline.tweakreg - INFO - * Images in GROUP &#39;my_galaxy_dither1_cal&#39;:
+2020-10-14 14:34:53,720 - stpipe.Image3Pipeline.tweakreg - INFO -      my_galaxy_dither1_cal
+2020-10-14 14:34:53,761 - stpipe.Image3Pipeline.tweakreg - INFO - * Images in GROUP &#39;my_galaxy_dither2_cal&#39;:
+2020-10-14 14:34:53,762 - stpipe.Image3Pipeline.tweakreg - INFO -      my_galaxy_dither2_cal
+2020-10-14 14:34:53,804 - stpipe.Image3Pipeline.tweakreg - INFO - * Images in GROUP &#39;my_galaxy_dither3_cal&#39;:
+2020-10-14 14:34:53,804 - stpipe.Image3Pipeline.tweakreg - INFO -      my_galaxy_dither3_cal
+2020-10-14 14:34:53,845 - stpipe.Image3Pipeline.tweakreg - INFO - * Images in GROUP &#39;my_galaxy_dither4_cal&#39;:
+2020-10-14 14:34:53,845 - stpipe.Image3Pipeline.tweakreg - INFO -      my_galaxy_dither4_cal
+2020-10-14 14:34:53,846 - stpipe.Image3Pipeline.tweakreg - INFO - 
+2020-10-14 14:34:53,846 - stpipe.Image3Pipeline.tweakreg - INFO -  
+2020-10-14 14:34:53,847 - stpipe.Image3Pipeline.tweakreg - INFO - ***** tweakwcs.imalign.align_wcs() started on 2020-10-14 14:34:53.846778
+2020-10-14 14:34:53,848 - stpipe.Image3Pipeline.tweakreg - INFO -       Version 0.6.4
+2020-10-14 14:34:53,848 - stpipe.Image3Pipeline.tweakreg - INFO -  
+2020-10-14 14:34:53,872 - stpipe.Image3Pipeline.tweakreg - WARNING - Group with ID &#39;my_galaxy_dither1_cal&#39; will not be aligned: empty source catalog
+2020-10-14 14:34:53,892 - stpipe.Image3Pipeline.tweakreg - WARNING - Group with ID &#39;my_galaxy_dither4_cal&#39; will not be aligned: empty source catalog
+2020-10-14 14:34:53,892 - stpipe.Image3Pipeline.tweakreg - INFO - Selected image &#39;GROUP ID: my_galaxy_dither2_cal&#39; as reference image
+2020-10-14 14:34:53,897 - stpipe.Image3Pipeline.tweakreg - INFO - Aligning image catalog &#39;GROUP ID: my_galaxy_dither3_cal&#39; to the reference catalog.
+2020-10-14 14:34:54,024 - stpipe.Image3Pipeline.tweakreg - INFO - Matching sources from &#39;my_galaxy_dither3_cal&#39; catalog with sources from the reference &#39;my_galaxy_dither2_cal&#39; catalog.
+2020-10-14 14:34:54,025 - stpipe.Image3Pipeline.tweakreg - INFO - Computing initial guess for X and Y shifts...
+2020-10-14 14:34:54,026 - stpipe.Image3Pipeline.tweakreg - INFO - Found initial X and Y shifts of 0, 0 based on a single non-zero bin and 1 matches
+2020-10-14 14:34:54,028 - stpipe.Image3Pipeline.tweakreg - INFO - Found 1 matches for &#39;GROUP ID: my_galaxy_dither3_cal&#39;...
+2020-10-14 14:34:54,029 - stpipe.Image3Pipeline.tweakreg - WARNING - Not enough matches (&lt; 1) found for image catalog &#39;GROUP ID: my_galaxy_dither3_cal&#39;.
+2020-10-14 14:34:54,029 - stpipe.Image3Pipeline.tweakreg - INFO -  
+2020-10-14 14:34:54,030 - stpipe.Image3Pipeline.tweakreg - INFO - ***** tweakwcs.imalign.align_wcs() ended on 2020-10-14 14:34:54.029592
+2020-10-14 14:34:54,030 - stpipe.Image3Pipeline.tweakreg - INFO - ***** tweakwcs.imalign.align_wcs() TOTAL RUN TIME: 0:00:00.182814
+2020-10-14 14:34:54,031 - stpipe.Image3Pipeline.tweakreg - INFO -  
+2020-10-14 14:34:54,034 - stpipe.Image3Pipeline.tweakreg - INFO - Step tweakreg done
+2020-10-14 14:34:54,129 - stpipe.Image3Pipeline.skymatch - INFO - Step skymatch running with args (&lt;ModelContainer&gt;,).
+2020-10-14 14:34:54,131 - stpipe.Image3Pipeline.skymatch - INFO - Step skymatch parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: False, &#39;skip&#39;: True, &#39;suffix&#39;: None, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;skymethod&#39;: &#39;global+match&#39;, &#39;match_down&#39;: True, &#39;subtract&#39;: False, &#39;stepsize&#39;: None, &#39;skystat&#39;: &#39;mode&#39;, &#39;dqbits&#39;: &#39;0&#39;, &#39;lower&#39;: None, &#39;upper&#39;: None, &#39;nclip&#39;: 5, &#39;lsigma&#39;: 4.0, &#39;usigma&#39;: 4.0, &#39;binwidth&#39;: 0.1}
+2020-10-14 14:34:54,132 - stpipe.Image3Pipeline.skymatch - INFO - Step skipped.
+2020-10-14 14:34:54,134 - stpipe.Image3Pipeline.skymatch - INFO - Step skymatch done
+2020-10-14 14:34:54,201 - stpipe.Image3Pipeline.outlier_detection - INFO - Step outlier_detection running with args (&lt;ModelContainer&gt;,).
+2020-10-14 14:34:54,203 - stpipe.Image3Pipeline.outlier_detection - INFO - Step outlier_detection parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;crf&#39;, &#39;search_output_file&#39;: False, &#39;input_dir&#39;: &#39;&#39;, &#39;weight_type&#39;: &#39;exptime&#39;, &#39;pixfrac&#39;: 1.0, &#39;kernel&#39;: &#39;square&#39;, &#39;fillval&#39;: &#39;INDEF&#39;, &#39;nlow&#39;: 0, &#39;nhigh&#39;: 0, &#39;maskpt&#39;: 0.7, &#39;grow&#39;: 1, &#39;snr&#39;: &#39;4.0 3.0&#39;, &#39;scale&#39;: &#39;0.5 0.4&#39;, &#39;backg&#39;: 0.0, &#39;save_intermediate_results&#39;: False, &#39;resample_data&#39;: True, &#39;good_bits&#39;: &#39;~DO_NOT_USE&#39;, &#39;scale_detection&#39;: False}
+2020-10-14 14:34:54,206 - stpipe.Image3Pipeline.outlier_detection - INFO - Performing outlier detection on 4 inputs
+2020-10-14 14:34:54,835 - stpipe.Image3Pipeline.outlier_detection - INFO - Drizzling (1024, 1032) --&gt; (1142, 1111)
+2020-10-14 14:34:55,918 - stpipe.Image3Pipeline.outlier_detection - INFO - Drizzling (1024, 1032) --&gt; (1142, 1111)
+2020-10-14 14:34:56,954 - stpipe.Image3Pipeline.outlier_detection - INFO - Drizzling (1024, 1032) --&gt; (1142, 1111)
+2020-10-14 14:34:58,041 - stpipe.Image3Pipeline.outlier_detection - INFO - Drizzling (1024, 1032) --&gt; (1142, 1111)
+2020-10-14 14:34:58,893 - stpipe.Image3Pipeline.outlier_detection - INFO - Generating median from 4 images
+2020-10-14 14:34:59,159 - stpipe.Image3Pipeline.outlier_detection - WARNING - /Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1113: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a, func=_nanmedian, axis=axis, out=out,
+
+2020-10-14 14:34:59,244 - stpipe.Image3Pipeline.outlier_detection - INFO - Blotting median...
+2020-10-14 14:34:59,800 - stpipe.Image3Pipeline.outlier_detection - INFO - Blotting (1024, 1032) &lt;-- (1142, 1111)
+2020-10-14 14:35:00,411 - stpipe.Image3Pipeline.outlier_detection - INFO - Blotting (1024, 1032) &lt;-- (1142, 1111)
+2020-10-14 14:35:01,024 - stpipe.Image3Pipeline.outlier_detection - INFO - Blotting (1024, 1032) &lt;-- (1142, 1111)
+2020-10-14 14:35:01,646 - stpipe.Image3Pipeline.outlier_detection - INFO - Blotting (1024, 1032) &lt;-- (1142, 1111)
+2020-10-14 14:35:02,020 - stpipe.Image3Pipeline.outlier_detection - WARNING - /Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/jwst/outlier_detection/outlier_detection.py:424: RuntimeWarning: overflow encountered in square
+  ta = np.sqrt(np.abs(blot_data + subtracted_background) + err_data ** 2)
+
+2020-10-14 14:35:03,018 - stpipe.Image3Pipeline.outlier_detection - INFO - Saved model in demo_output/my_galaxy_dither1_a3001_crf.fits
+2020-10-14 14:35:03,431 - stpipe.Image3Pipeline.outlier_detection - INFO - Saved model in demo_output/my_galaxy_dither2_a3001_crf.fits
+2020-10-14 14:35:03,847 - stpipe.Image3Pipeline.outlier_detection - INFO - Saved model in demo_output/my_galaxy_dither3_a3001_crf.fits
+2020-10-14 14:35:04,280 - stpipe.Image3Pipeline.outlier_detection - INFO - Saved model in demo_output/my_galaxy_dither4_a3001_crf.fits
+2020-10-14 14:35:04,281 - stpipe.Image3Pipeline.outlier_detection - INFO - Step outlier_detection done
+2020-10-14 14:35:04,531 - stpipe.Image3Pipeline.resample - INFO - Step resample running with args (&lt;ModelContainer&gt;,).
+2020-10-14 14:35:04,533 - stpipe.Image3Pipeline.resample - INFO - Step resample parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;i2d&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;pixfrac&#39;: 1.0, &#39;kernel&#39;: &#39;square&#39;, &#39;fillval&#39;: &#39;INDEF&#39;, &#39;weight_type&#39;: &#39;exptime&#39;, &#39;single&#39;: False, &#39;blendheaders&#39;: True}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:35:04,538 - stpipe.Image3Pipeline.resample - INFO - Drizpars reference file: /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_drizpars_0001.fits
+2020-10-14 14:35:04,647 - stpipe.Image3Pipeline.resample - INFO - Blending metadata for my_galaxy
+2020-10-14 14:35:06,026 - stpipe.Image3Pipeline.resample - INFO - Drizzling (1024, 1032) --&gt; (1142, 1111)
+2020-10-14 14:35:07,078 - stpipe.Image3Pipeline.resample - INFO - Drizzling (1024, 1032) --&gt; (1142, 1111)
+2020-10-14 14:35:08,165 - stpipe.Image3Pipeline.resample - INFO - Drizzling (1024, 1032) --&gt; (1142, 1111)
+2020-10-14 14:35:09,313 - stpipe.Image3Pipeline.resample - INFO - Drizzling (1024, 1032) --&gt; (1142, 1111)
+2020-10-14 14:35:09,880 - stpipe.Image3Pipeline.resample - INFO - Update S_REGION to POLYGON ICRS  0.021513048 -0.020377659 0.024586201 0.014641639 359.990548179 0.017628679 359.987475025 -0.017390618
+2020-10-14 14:35:10,653 - stpipe.Image3Pipeline.resample - INFO - Saved model in demo_output/my_galaxy_i2d.fits
+2020-10-14 14:35:10,654 - stpipe.Image3Pipeline.resample - INFO - Step resample done
+2020-10-14 14:35:10,719 - stpipe.Image3Pipeline.source_catalog - INFO - Step source_catalog running with args (&lt;ImageModel(1142, 1111) from my_galaxy_i2d.fits&gt;,).
+2020-10-14 14:35:10,720 - stpipe.Image3Pipeline.source_catalog - INFO - Step source_catalog parameters are: {&#39;pre_hooks&#39;: [], &#39;post_hooks&#39;: [], &#39;output_file&#39;: None, &#39;output_dir&#39;: None, &#39;output_ext&#39;: &#39;.fits&#39;, &#39;output_use_model&#39;: False, &#39;output_use_index&#39;: True, &#39;save_results&#39;: True, &#39;skip&#39;: False, &#39;suffix&#39;: &#39;cat&#39;, &#39;search_output_file&#39;: True, &#39;input_dir&#39;: &#39;&#39;, &#39;bkg_boxsize&#39;: 100, &#39;kernel_fwhm&#39;: 3.0, &#39;snr_threshold&#39;: 5.0, &#39;npixels&#39;: 5, &#39;deblend&#39;: False, &#39;aperture_ee1&#39;: 30, &#39;aperture_ee2&#39;: 50, &#39;aperture_ee3&#39;: 70, &#39;ci1_star_threshold&#39;: 2.0, &#39;ci2_star_threshold&#39;: 1.8}
+2020-10-14 14:35:10,730 - stpipe.Image3Pipeline.source_catalog - INFO - Using APCORR reference file /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_apcorr_0005.fits
+2020-10-14 14:35:10,732 - stpipe.Image3Pipeline.source_catalog - INFO - Using ABVEGAOFFSET reference file /Users/patrickkavanagh/crds_mirror/references/jwst/miri/jwst_miri_abvegaoffset_0001.asdf
+2020-10-14 14:35:10,733 - stpipe.Image3Pipeline.source_catalog - INFO - Instrument: MIRI
+2020-10-14 14:35:10,733 - stpipe.Image3Pipeline.source_catalog - INFO - Detector: MIRIMAGE
+2020-10-14 14:35:10,734 - stpipe.Image3Pipeline.source_catalog - INFO - Filter: F1130W
+2020-10-14 14:35:10,734 - stpipe.Image3Pipeline.source_catalog - INFO - Subarray: FULL
+2020-10-14 14:35:10,774 - stpipe.Image3Pipeline.source_catalog - INFO - AB to Vega magnitude offset 5.49349
+2020-10-14 14:35:12,686 - stpipe.Image3Pipeline.source_catalog - INFO - Detected 47 sources
+2020-10-14 14:35:13,408 - stpipe.Image3Pipeline.source_catalog - WARNING - /Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/astropy/io/misc/yaml.py:144: DeprecationWarning: tostring() is deprecated. Use tobytes() instead.
+  data_b64 = base64.b64encode(obj.tostring())
+
+2020-10-14 14:35:13,458 - stpipe.Image3Pipeline.source_catalog - INFO - Wrote source catalog: demo_output/my_galaxy_cat.ecsv
+2020-10-14 14:35:13,466 - stpipe.Image3Pipeline.source_catalog - INFO - Step source_catalog done
+2020-10-14 14:35:13,469 - stpipe.Image3Pipeline - INFO - Step Image3Pipeline done
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot the before (rate) and after (cal) images for the first dither position</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driz_dm</span> <span class="o">=</span> <span class="n">datamodels</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">my_output_dir</span><span class="p">,</span><span class="s1">&#39;my_galaxy_i2d.fits&#39;</span><span class="p">))</span>
+
+<span class="c1"># plot--------------------------------------</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># show last frame of first integration</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">driz_dm</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Drizzled image&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-14 14:40:37,490 - stpipe - WARNING - /Users/patrickkavanagh/anaconda3/anaconda3/envs/jwst7.6/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+<img alt="../../_images/be1e21b55853184e48b17b2ea2558a6746a916d7abbce0331eaa683acf874e8c.png" src="../../_images/be1e21b55853184e48b17b2ea2558a6746a916d7abbce0331eaa683acf874e8c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_catalog</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">my_output_dir</span><span class="p">,</span><span class="s1">&#39;my_galaxy_cat.ecsv&#39;</span><span class="p">)</span>
+<span class="n">sources</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">my_catalog</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ascii.ecsv&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sources</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>    <span class="c1"># print all available column names</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">sources</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;xcentroid&#39;</span><span class="p">,</span> <span class="s1">&#39;ycentroid&#39;</span><span class="p">,</span> <span class="s1">&#39;sky_centroid&#39;</span><span class="p">,</span> <span class="s1">&#39;aper30_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">max_width</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;TableColumns names=(&#39;id&#39;,&#39;xcentroid&#39;,&#39;ycentroid&#39;,&#39;sky_centroid&#39;,&#39;aper_bkg_flux&#39;,&#39;aper_bkg_flux_err&#39;,&#39;aper30_flux&#39;,&#39;aper30_flux_err&#39;,&#39;aper50_flux&#39;,&#39;aper50_flux_err&#39;,&#39;aper70_flux&#39;,&#39;aper70_flux_err&#39;,&#39;aper_total_flux&#39;,&#39;aper_total_flux_err&#39;,&#39;aper30_abmag&#39;,&#39;aper30_abmag_err&#39;,&#39;aper50_abmag&#39;,&#39;aper50_abmag_err&#39;,&#39;aper70_abmag&#39;,&#39;aper70_abmag_err&#39;,&#39;aper_total_abmag&#39;,&#39;aper_total_abmag_err&#39;,&#39;aper30_vegamag&#39;,&#39;aper30_vegamag_err&#39;,&#39;aper50_vegamag&#39;,&#39;aper50_vegamag_err&#39;,&#39;aper70_vegamag&#39;,&#39;aper70_vegamag_err&#39;,&#39;aper_total_vegamag&#39;,&#39;aper_total_vegamag_err&#39;,&#39;CI_30_50&#39;,&#39;CI_50_70&#39;,&#39;CI_30_70&#39;,&#39;is_star&#39;,&#39;sharpness&#39;,&#39;roundness&#39;,&#39;nn_dist&#39;,&#39;nn_abmag&#39;,&#39;isophotal_flux&#39;,&#39;isophotal_flux_err&#39;,&#39;isophotal_abmag&#39;,&#39;isophotal_abmag_err&#39;,&#39;isophotal_vegamag&#39;,&#39;isophotal_vegamag_err&#39;,&#39;isophotal_area&#39;,&#39;semimajor_sigma&#39;,&#39;semiminor_sigma&#39;,&#39;ellipticity&#39;,&#39;orientation&#39;,&#39;sky_orientation&#39;,&#39;sky_bbox_ll&#39;,&#39;sky_bbox_ul&#39;,&#39;sky_bbox_lr&#39;,&#39;sky_bbox_ur&#39;)&gt;
+
+ id xcentroid ycentroid                 sky_centroid                 aper30_flux 
+       pix       pix                      deg,deg                         Jy     
+--- --------- --------- ------------------------------------------- -------------
+  1  469.9220   54.2437   0.007248914722059638,-0.01744971065714288  1.295216e-04
+  2  696.2326   80.7708  0.00038051187933409224,-0.0160272516694967  1.442850e-04
+  3  591.1478  190.5680 0.0038983912527062363,-0.012943117841751456  1.290441e-04
+  4  738.6110  230.5144     359.9994839469423,-0.011321339783567972  1.014409e-04
+  5  695.9396  288.1143  0.000947463105526589,-0.009669874720335625  1.277817e-04
+  6  844.8914  326.5756     359.9964833750726,-0.008089629301227494  9.848953e-05
+  7  940.8762  435.2375       359.9938324240641,-0.0044992275787256  1.065251e-04
+  8  351.3610  484.1433  0.012041445537664171,-0.004585939549639497  1.219468e-04
+  9  581.3696  592.3515 0.005279450326242856,-0.0006487877277036434  1.193683e-04
+ 10 1072.0149  590.2738      359.990228278093,0.0006078406314121922  9.908035e-05
+...       ...       ...                                         ...           ...
+ 38  992.9896 1020.0000      359.9938079836952,0.013572685360032446 -2.050312e-05
+ 39 1071.1200 1062.8683      359.9915274827764,0.015097488347460787  6.945693e-05
+ 40 1044.3592 1067.4549      359.9923604446804,0.015166120328598723 -8.578647e-05
+ 41 1036.2449 1077.6618      359.9926367354973,0.015457277527749147 -9.771649e-05
+ 42 1029.9704 1079.9556      359.99283531443257,0.01551073282752823  1.875869e-05
+ 43  199.5609 1089.4041    0.01832515355077436,0.013565815141783798  1.590341e-04
+ 44 1037.1692 1098.0000      359.9926631224109,0.016083434575418797 -2.417245e-05
+ 45  774.1114 1130.9421   0.0008184054050327275,0.01638570381518864  1.341135e-04
+ 46  500.7521 1136.2409   0.009215198170058501,0.015812576058425707  1.469640e-04
+ 47  798.2018 1138.8243 0.00010088824422353018,0.016692240119965878  1.262678e-04
+Length = 47 rows
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read source X,Y positions from the table, show with circles of radius 10pix</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="s1">&#39;xcentroid&#39;</span><span class="p">],</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;ycentroid&#39;</span><span class="p">])</span>
+<span class="n">apertures</span> <span class="o">=</span> <span class="n">CircularAperture</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">15.</span><span class="p">)</span>
+
+<span class="c1"># plot--------------------------------------</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># show last frame of first integration</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">driz_dm</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">apertures</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Drizzled image with detected sources&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bbe0caec2be22396b7bea488c5d3022bf08061db6121d9ccc0a6e6cffdcbeee1.png" src="../../_images/bbe0caec2be22396b7bea488c5d3022bf08061db6121d9ccc0a6e6cffdcbeee1.png" />
+</div>
+</div>
+</section>
+<section id="command-line">
+<h2>Command line<a class="headerlink" href="#command-line" title="Link to this heading">#</a></h2>
+<p>To achieve the same result from the command line there are a couple of options. However, one must still generate the association file. In this case, it is best to copy the template above into a text file and save it to <code class="docutils literal notranslate"><span class="pre">my_galaxy_lvl3_asn.json</span></code>. The content is printed here for convenience.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;asn_type&quot;</span><span class="p">:</span> <span class="s2">&quot;image3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;asn_rule&quot;</span><span class="p">:</span> <span class="s2">&quot;DMS_Level3_Base&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;version_id&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;code_version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.13.7&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;degraded_status&quot;</span><span class="p">:</span> <span class="s2">&quot;No known degraded exposures in association.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;program&quot;</span><span class="p">:</span> <span class="s2">&quot;noprogram&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="s2">&quot;No constraints&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;asn_id&quot;</span><span class="p">:</span> <span class="s2">&quot;a3001&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;asn_pool&quot;</span><span class="p">:</span> <span class="s2">&quot;my_galaxy_pool&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;products&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_galaxy&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_science/my_galaxy_dither1_cal.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;science&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_science/my_galaxy_dither2_cal.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;science&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_science/my_galaxy_dither3_cal.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;science&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;expname&quot;</span><span class="p">:</span> <span class="s2">&quot;IMA_science/my_galaxy_dither4_cal.fits&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;exptype&quot;</span><span class="p">:</span> <span class="s2">&quot;science&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Option 1:</strong>
+Run the <code class="docutils literal notranslate"><span class="pre">Image3Pipeline</span></code> class using the <code class="docutils literal notranslate"><span class="pre">strun</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>demo_output
+
+strun<span class="w"> </span>jwst.pipeline.Image3Pipeline<span class="w"> </span>my_galaxy_lvl3_asn.json<span class="w"> </span>--output_dir<span class="w"> </span>demo_output
+</pre></div>
+</div>
+<p>This will produce the same output file in the user-defined <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code></p>
+<p><strong>Option 2:</strong>
+Collect the pipeline configuration files in your working directory (if they are not already there) using <code class="docutils literal notranslate"><span class="pre">collect_pipeline_configs</span></code> and then run the <code class="docutils literal notranslate"><span class="pre">Image3Pipeline</span></code> using the <code class="docutils literal notranslate"><span class="pre">strun</span></code> command with the associated <code class="docutils literal notranslate"><span class="pre">calwebb_image3.cfg</span></code> file. This option is a little more flexible as one can create edit the cfg files, use them again, etc.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>demo_output
+
+collect_pipeline_cfgs<span class="w"> </span>cfgs/
+
+strun<span class="w"> </span>cfgs/calwebb_image3.cfg<span class="w"> </span>my_galaxy_lvl3_asn.json<span class="w"> </span>--output_dir<span class="w"> </span>demo_output
+</pre></div>
+</div>
+<p>This will produce the same output file in the user-defined <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code></p>
+</section>
+<section id="further-examples">
+<h2>Further examples<a class="headerlink" href="#further-examples" title="Link to this heading">#</a></h2>
+<p>Other notebooks with more complex examples can be found here:</p>
+<p><em>To be added</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/JWST MIRI Pipeline"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-data">Input data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line">Command line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-examples">Further examples</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Patrick Kavanagh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
