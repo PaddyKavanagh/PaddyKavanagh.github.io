@@ -1,30 +1,30 @@
 format: jb-book
 root: index
 chapters:
-  - file: EP404/Introduction
+  - file: EP404/EP404_overview_notebook
     title: EP404 - Statistics and Data Analysis
     sections:
-      - file: EP404/your_first_file
+      - file: EP404/EP404_Chapter1_notebook_random-numbers
       # Add more EP404 files here
 
-  - file: JWST MIRI Pipeline/Introduction
-    title: JWST MIRI Pipeline
-    sections:
-      - file: JWST MIRI Pipeline/Level1_Detector1Pipeline
-      - file: JWST MIRI Pipeline/dq_init
-      - file: JWST MIRI Pipeline/saturation
-      - file: JWST MIRI Pipeline/firstframe
-      - file: JWST MIRI Pipeline/lastframe
-      - file: JWST MIRI Pipeline/linearity
-      - file: JWST MIRI Pipeline/RSCD
-      - file: JWST MIRI Pipeline/dark_current
-      - file: JWST MIRI Pipeline/refpix
-      - file: JWST MIRI Pipeline/jump
-      - file: JWST MIRI Pipeline/ramp_fitting
-      - file: JWST MIRI Pipeline/Level2_Image2Pipeline    
-      - file: JWST MIRI Pipeline/Level3_Image3Pipeline
-      - file: JWST MIRI Pipeline/Level2_Spec2Pipeline_MRS
-      - file: JWST MIRI Pipeline/Level3_Spec3Pipeline_MRS
-      - file: JWST MIRI Pipeline/Level2_Spec2Pipeline_LRS-SLIT_point_source
+  #- file: JWST MIRI Pipeline/Introduction
+  #  title: JWST MIRI Pipeline
+  #  sections:
+  #    - file: JWST MIRI Pipeline/Level1_Detector1Pipeline
+  #    - file: JWST MIRI Pipeline/dq_init
+  #    - file: JWST MIRI Pipeline/saturation
+  #    - file: JWST MIRI Pipeline/firstframe
+  #    - file: JWST MIRI Pipeline/lastframe
+  #    - file: JWST MIRI Pipeline/linearity
+  #    - file: JWST MIRI Pipeline/RSCD
+  #    - file: JWST MIRI Pipeline/dark_current
+  #    - file: JWST MIRI Pipeline/refpix
+  #    - file: JWST MIRI Pipeline/jump
+  #    - file: JWST MIRI Pipeline/ramp_fitting
+  #    - file: JWST MIRI Pipeline/Level2_Image2Pipeline    
+  #    - file: JWST MIRI Pipeline/Level3_Image3Pipeline
+  #    - file: JWST MIRI Pipeline/Level2_Spec2Pipeline_MRS
+  #    - file: JWST MIRI Pipeline/Level3_Spec3Pipeline_MRS
+  #    - file: JWST MIRI Pipeline/Level2_Spec2Pipeline_LRS-SLIT_point_source
 
   # Add more folders as chapters here, following the same pattern
