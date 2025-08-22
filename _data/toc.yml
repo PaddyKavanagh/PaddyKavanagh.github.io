@@ -47,7 +47,7 @@
 - title: EP404 - Statistics and Data Analysis
   url: /EP404_overview_notebook
   not_numbered: true
-  expand_sections: false
+  expand_sections: true
   sections:
     - title: Chapter1 - Random numbers
       url: /EP404_Chapter1_notebook_random-numbers
