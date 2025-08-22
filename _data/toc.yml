@@ -45,12 +45,12 @@
 
 # EP404
 - title: EP404 - Statistics and Data Analysis
-  url: EP404/EP404_overview_notebook
+  url: /EP404_overview_notebook
   not_numbered: true
   expand_sections: false
   sections:
     - title: Chapter1 - Random numbers
-      url: EP404/EP404_Chapter1_notebook_random-numbers
+      url: /EP404_Chapter1_notebook_random-numbers
       not_numbered: true
 
 # RTS

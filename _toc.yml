@@ -1,10 +1,10 @@
 format: jb-book
 root: index
 chapters:
-  - file: EP404/EP404_overview_notebook
+  - file: content/EP404/EP404_overview_notebook
     title: EP404 - Statistics and Data Analysis
     sections:
-      - file: EP404/EP404_Chapter1_notebook_random-numbers
+      - file: content/EP404/EP404_Chapter1_notebook_random-numbers
       # Add more EP404 files here
 
   #- file: JWST MIRI Pipeline/Introduction
