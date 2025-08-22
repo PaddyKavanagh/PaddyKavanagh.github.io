@@ -23,7 +23,7 @@
 
 # Top-level page
 - title: Home
-  url: /Introduction
+  url: index
   not_numbered: true
   expand_sections: false
 
@@ -41,71 +41,81 @@
 - divider: true
 
 # Add a header and sample content section
-- header: JWST Pipeline Build 7.6
+- header: Content
 
-# RTS
-- title: Ramps-to-slopes (CALDETECTOR1)
-  url: /Level1_Detector1Pipeline
+# EP404
+- title: EP404 - Statistics and Data Analysis
+  url: EP404/EP404_overview_notebook
   not_numbered: true
   expand_sections: false
   sections:
-  - title: dq_init
-    url: /dq_init
-    not_numbered: true
-  - title: saturation
-    url: /saturation
-    not_numbered: true
-  - title: firstframe
-    url: /firstframe
-    not_numbered: true
-  - title: lastframe
-    url: /lastframe
-    not_numbered: true
-  - title: linearity
-    url: /linearity
-    not_numbered: true
-  - title: RSCD
-    url: /RSCD
-    not_numbered: true
-  - title: dark_current
-    url: /dark_current
-    not_numbered: true
-  - title: refpix
-    url: /refpix
-    not_numbered: true
-  - title: jump
-    url: /jump
-    not_numbered: true
-  - title: ramp_fitting
-    url: /ramp_fitting
-    not_numbered: true
+    - title: Chapter1 - Random numbers
+      url: EP404/EP404_Chapter1_notebook_random-numbers
+      not_numbered: true
+
+# RTS
+#- title: Ramps-to-slopes (CALDETECTOR1)
+#  url: /Level1_Detector1Pipeline
+#  not_numbered: true
+#  expand_sections: false
+#  sections:
+#  - title: dq_init
+#    url: /dq_init
+#    not_numbered: true
+#  - title: saturation
+#    url: /saturation
+#    not_numbered: true
+#  - title: firstframe
+#    url: /firstframe
+#    not_numbered: true
+#  - title: lastframe
+#    url: /lastframe
+#    not_numbered: true
+#  - title: linearity
+#    url: /linearity
+#    not_numbered: true
+#  - title: RSCD
+#    url: /RSCD
+#    not_numbered: true
+#  - title: dark_current
+#    url: /dark_current
+#    not_numbered: true
+#  - title: refpix
+#    url: /refpix
+#    not_numbered: true
+#  - title: jump
+#    url: /jump
+#    not_numbered: true
+#  - title: ramp_fitting
+#    url: /ramp_fitting
+#    not_numbered: true
     
 # IMAGE2
-- title: Level 2 Imager (CALIMAGE2)
-  url: /Level2_Image2Pipeline
-  not_numbered: true
-  expand_sections: true
+#- title: Level 2 Imager (CALIMAGE2)
+#  url: /Level2_Image2Pipeline
+#  not_numbered: true
+#  expand_sections: true
   
 # IMAGE3
-- title: Level 3 Imager (CALIMAGE3)
-  url: /Level3_Image3Pipeline
-  not_numbered: true
-  expand_sections: true
+#- title: Level 3 Imager (CALIMAGE3)
+#  url: /Level3_Image3Pipeline
+#  not_numbered: true
+#  expand_sections: true
   
 # SPEC2 MRS
-- title: Level 2 MRS (CALSPEC2)
-  url: /Level2_Spec2Pipeline_MRS
-  not_numbered: true
-  expand_sections: true
+#- title: Level 2 MRS (CALSPEC2)
+#  url: /Level2_Spec2Pipeline_MRS
+#  not_numbered: true
+#  expand_sections: true
   
 # SPEC3 MRS
-- title: Level 3 MRS (CALSPEC3)
-  url: /Level3_Spec3Pipeline_MRS
-  not_numbered: true
-  expand_sections: true
+#- title: Level 3 MRS (CALSPEC3)
+#  url: /Level3_Spec3Pipeline_MRS
+#  not_numbered: true
+#  expand_sections: true
   
 # SPEC2 LRS-SLIT
-- title: Level 2 LRS-SLIT PS (CALSPEC2)
-  url: /Level2_Spec2Pipeline_LRS-SLIT_point_source
-  not_numbered: true
-  expand_sections: true
+#- title: Level 2 LRS-SLIT PS (CALSPEC2)
+#  url: /Level2_Spec2Pipeline_LRS-SLIT_point_source
+#  not_numbered: true
+#  expand_sections: true
