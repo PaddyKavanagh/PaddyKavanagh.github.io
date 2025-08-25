@@ -1,0 +1,22 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+defaults:  # The defaults key will be applied to all chapters and sub-sections
+  titlesonly: True
+options:  # The options key will be applied to all chapters, but not sub-sections
+  numbered: False
+parts:
+  - caption: EP404 Statistics and Data Analysis
+    chapters:
+    - file: content/EP404/EP404_overview_notebook
+      title: Module Overview
+    - file: content/EP404/EP404_Chapter1_notebook_random-numbers
+      
+  #- caption: Name of Part 2
+  #  chapters:
+  #  - file: path/to/part2/chapter1
+  #  - file: path/to/part2/chapter2
+  #    sections:
+  #    - file: path/to/part2/chapter2/section1
